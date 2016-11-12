@@ -12,7 +12,7 @@
     "webpack",
     "node"
   ],
-  "author": "Christian Alfoni",
+  "author": "Bogdna Bugarschi",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/christianalfoni/webpack-express-boilerplate/issues"
@@ -27,8 +27,10 @@
   },
   "dependencies": {
     "babel-cli": "^6.4.0",
+    "immutable": "^3.8.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-redux": "^4.4.5",
     "redux": "^3.6.0",
     "redux-observable": "^0.12.1"
   },
