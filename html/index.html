@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Theater Hub</title>
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="js/zepto.min.js"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    
+    <header>
+        <div class="logo">
+            <svg id="logosvg" width="49px" height="26px" viewBox="38 10 49 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                <path d="M53.084,36 L44.516,36 L44.516,17.748 L38.252,17.748 L38.252,10.512 L59.348,10.512 L59.348,17.748 L53.084,17.748 L53.084,36 Z M77.528,26.316 L70.544,26.316 L70.544,36 L61.976,36 L61.976,10.512 L70.508,10.512 L70.508,19.152 L77.492,19.152 L77.492,10.512 L86.096,10.512 L86.096,36 L77.528,36 L77.528,26.316 Z" id="TH" stroke="none" fill="#4A4A4A" fill-rule="evenodd"></path>
+            </svg>
+        </div>
+        <div class="toggleMenu">&nbsp;</div>
+        <nav>
+            <ul>
+                <li class="selected"><a href="#">Prima pagină</a></li>
+                <li><a href="#">Spectacole</a></li>
+                <li><a href="#">Trupe</a></li>
+                <li><a href="#">Book a show</a></li>
+                <li><a href="#">Susținere trupe</a></li>
+                <li><a href="#">MyBAND</a></li>
+            </ul>
+        </nav>
+        <div class="header-separator">&nbsp;</div>
+
+        <div class="slideshow">
+            <div class="slideinfo">
+                <div class="title">
+                    Păhărelul cu nectar
+                </div>
+                <div class="location">
+                    Teatrul Elisabeta, București
+                </div>    
+                <div class="date">
+                    Sâmbătă, 12 Noiembrie, ora 11
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>    
+        <section>
+            <h1>Evenimente viitoare</h1>
+            <div class="event-day">
+                <div class="title">
+                    Sâmbătă, 12 Noiembrie
+                </div>
+                <div class="events">
+                    <div class="event">
+                        <img src="img/cum se duce.jpg"/>
+                        <div class="info">
+                            <div class="name">Cum Se Duce Totul Dracu'</div>
+                            <div class="cast">Ioana Chelmuș, Florin Frățilă</div>
+                            <div class="info-item">Durata: 1 h</div>
+                            <div class="info-item">Rezervări: 0735 026 762</div>
+                            <div class="info-item">Preț bilet: 18 lei</div>
+                        </div>
+                        <div class="additional-details">
+                            <div class="time">ora 20:00</div>
+                            <div class="place">În Culise, București</div>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <img src="img/valar improvis.jpg"/>
+                        <div class="info">
+                            <div class="name">Valar Improvis'</div>
+                            <div class="cast">Delia Alexandra Riciu, Adriana Bordeanu, Vlad Pasecu, George Dumitru, Andrei Negoita, Bogdan Untilă</div>
+                            <div class="info-item">Durata: 1,5 h</div>
+                            <div class="info-item">Rezervări: 0730 744 682</div>
+                            <div class="info-item">Preț bilet: 25 lei</div>
+                        </div>
+                        <div class="additional-details">
+                            <div class="time">ora 22:00</div>
+                            <div class="place">Recul, București</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="event-day">
+                <div class="title">
+                    Duminică, 13 Noiembrie
+                </div>
+                <div class="events">
+                    <div class="event">
+                        <img src="img/amanta de la pranz.jpg"/>
+                        <div class="info">
+                            <div class="name">Amanta de la prânz</div>
+                            <div class="cast">George Dumitru, Andrei Negoita, Bogdan Untilă</div>
+                            <div class="info-item">Durata: 1,5 h</div>
+                            <div class="info-item">Rezervări: 0735 026 762</div>
+                            <div class="info-item">Preț bilet: 20 lei</div>
+                        </div>
+                        <div class="additional-details">
+                            <div class="time">ora 17:00</div>
+                            <div class="place">Music Club, București</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>   
+    </main>
+    
+    <aside>
+        <section>
+            <h1>Book a show</h1>
+            <p>Dacă ești în căutarea unei trupe de teatru care să susțină un spectacol in locația ta, vizitează secțiunea <a href="#">Book a show</a>.</p>
+        </section>
+
+        <section>
+            <h1>MyBAND</h1>
+            <p><a href="#">Înscrie-ți trupa</a> de teatru pe Theater Hub, platforma special creată pentru voi. </p>
+        </section>
+
+        <section>
+            <h1>Susținere trupe</h1>
+            <p>Uneori trupele de teatru au nevoie de ajutor pentru punerea in scenă a spectacolelor. Vezi dacă poți da o mână de ajutor:</p>
+        </section>
+    </aside>
+
+    <footer>
+    </footer>
+
+    <script>
+        $('.toggleMenu').click(function() {
+            $('header nav').toggleClass('visible-block');
+        });
+    </script>
+
+</body>
+</html>
