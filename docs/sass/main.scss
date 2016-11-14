@@ -8,6 +8,7 @@
 
 @import 'forms';
 @import 'login';
+@import 'profile';
 
 .home {
   @include col(8, 12, 0);

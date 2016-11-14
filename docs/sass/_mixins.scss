@@ -51,3 +51,8 @@
     font-weight: 400;
     font-size: em(14);
 }
+
+@mixin font-button-sm {
+    font-weight: 400;
+    font-size: em(12);
+}

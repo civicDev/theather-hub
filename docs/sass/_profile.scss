@@ -1,0 +1,18 @@
+.band-profile {
+    @include col(1, 1, 0);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-top: $big-margin;
+
+    section {
+        margin-bottom: 2 * $small-margin;
+    }
+
+    section.members {
+        padding-bottom: 2 * $small-margin;
+        border-bottom: 1px solid $primary-color;
+    }
+
+}

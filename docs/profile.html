@@ -1,0 +1,113 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Theater Hub</title>
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="js/zepto.min.js"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    
+    <header>
+        <div class="logo">
+            <svg id="logosvg" width="49px" height="26px" viewBox="38 10 49 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                <path d="M53.084,36 L44.516,36 L44.516,17.748 L38.252,17.748 L38.252,10.512 L59.348,10.512 L59.348,17.748 L53.084,17.748 L53.084,36 Z M77.528,26.316 L70.544,26.316 L70.544,36 L61.976,36 L61.976,10.512 L70.508,10.512 L70.508,19.152 L77.492,19.152 L77.492,10.512 L86.096,10.512 L86.096,36 L77.528,36 L77.528,26.316 Z" id="TH" stroke="none" fill="#4A4A4A" fill-rule="evenodd"></path>
+            </svg>
+        </div>
+        <div class="toggleMenu">&nbsp;</div>
+        <nav>
+            <ul>
+                <li><a href="#">Prima pagină</a></li>
+                <li><a href="#">Spectacole</a></li>
+                <li><a href="#">Trupe</a></li>
+                <li><a href="#">Book a show</a></li>
+                <li><a href="#">Susținere trupe</a></li>
+                <li class="selected"><a href="#">MyBAND</a></li>
+            </ul>
+        </nav>
+        <div class="header-separator">&nbsp;</div>
+        <nav class="sub-menu">
+            <ul>
+                <li class="selected"><a href="#">Detalii trupă</a></li>
+                <li><a href="#">Spectacolele noastre</a></li>
+                <li><a href="#">Evenimente</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="band-profile">
+        <form>
+            <section class="details">
+                <h1>Detalii trupă</h1>
+                
+                <label for="band-name">Nume</label>
+                <input name="band-name" type="text"/>
+                
+                <label for="band-founded">An înființare</label>
+                <input name="band-founded" type="text"/>
+                
+                <label for="band-picture">Poză profil</label>
+                <input name="band-picture" type="button" class="upload" value="Upload"/>
+
+                <label for="band-description">Descriere</label>
+                <textarea name="band-description"></textarea>
+                
+                <label for="band-city">Oraș reședință</label>
+                <input name="band-city" type="text"/>
+
+            </section>
+            <section class="members">
+                <h1>Membri</h1>
+                <table>
+                    <tr>
+                        <td class="name">Florin Popescu</td>
+                        <td class="fb-profile"><a href="">https://www.facebook.com/florinpopescu</a></td>
+                        <td class="edit"><a href="">Modifică</a></td>
+                        <td class="delete"><a href="">Șterge</a></td> 
+                    </tr>         
+                    <tr>
+                        <td class="name">Ion Ionescu</td>
+                        <td class="fb-profile"><a href="">https://www.facebook.com/ionescu96</a></td>
+                        <td class="edit"><a href="">Modifică</a></td>
+                        <td class="delete"><a href="">Șterge</a></td> 
+                    </tr>
+                    <tr>
+                        <td class="name">Andrei Carambol</td>
+                        <td class="fb-profile"><a href="">https://www.facebook.com/carambol</a></td>
+                        <td class="edit"><a href="">Modifică</a></td>
+                        <td class="delete"><a href="">Șterge</a></td> 
+                    </tr>
+                    <tr>
+                        <td class="name">Corina Alina</td>
+                        <td class="fb-profile"><a href="">https://www.facebook.com/corinalina</a></td>
+                        <td class="edit"><a href="">Modifică</a></td>
+                        <td class="delete"><a href="">Șterge</a></td> 
+                    </tr>              
+                </table>
+            </section>
+
+            <input name="login" type="submit" value="Salvare"/>
+        </form>  
+    </main>
+
+    <footer>
+    </footer>
+
+    <script>
+        $('.toggleMenu').click(function() {
+            $('header nav').toggleClass('visible-block');
+        });
+    </script>
+
+</body>
+</html>

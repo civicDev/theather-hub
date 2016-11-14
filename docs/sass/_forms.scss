@@ -26,25 +26,19 @@ form {
         }
     }
 
-    @mixin inputfield() {
+    input[type='text'], input[type='password'], textarea  {
         display: block;
         width: 100%;
-        font-size: em(14);
+        @include font-main;
         color: $primary-color;
         margin-top: 5px;
         margin-bottom: $small-margin;
         padding: 5px;
+        border: 1px solid $primary-color;
+        box-sizing:border-box;
     }
 
-    input[type='text'] {
-        @include inputfield;
-    }
-
-    input[type='password'] {
-        @include inputfield;
-    }
-
-    input[type='submit'] {
+    input[type='submit'], input[type='button'] {
         display: block;
         @include font-button;
         margin-top: 2 * $small-margin;
@@ -52,5 +46,28 @@ form {
         color: $light-color;
         border: 1px solid lightgray;
         background-color: #4990E2;
+        cursor: pointer;
+    }
+
+    input[type='button'].upload {
+        @include font-button-sm;
+        padding: 10px 25px 10px 25px;
+        margin-top: 5px;
+        margin-bottom: $small-margin;
+    }
+
+    textarea{
+        height: 200px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        td {
+            @include font-main;
+            border-bottom: 1px solid lightgray;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
     }
 }

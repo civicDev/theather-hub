@@ -18,8 +18,18 @@ a {
 a:visited {
   color: #1C79E8; }
 
+.edit, .delete {
+  font-weight: 300;
+  font-size: 0.875em;
+  font-style: italic; }
+
 .visible-block {
   display: block; }
+
+footer {
+  min-height: 200px;
+  margin-top: 100px;
+  border-top: 1px solid lightgray; }
 
 header {
   width: 100%;
@@ -51,6 +61,15 @@ header {
           color: #5A5A5A; }
       header nav ul li.selected {
         border-bottom: 4px solid #F8E81C; }
+  header .sub-menu {
+    font-weight: 600;
+    font-size: 0.875em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+    display: block;
+    margin-top: 14px;
+    text-align: center; }
   header .toggleMenu {
     display: none;
     content: url(../img/menu_gray.svg);
@@ -196,23 +215,18 @@ form .checkbox {
     display: inline-block;
     font-weight: 300;
     font-size: 0.875em; }
-form input[type='text'] {
+form input[type='text'], form input[type='password'], form textarea {
   display: block;
   width: 100%;
+  font-weight: 300;
   font-size: 0.875em;
   color: #5A5A5A;
   margin-top: 5px;
   margin-bottom: 20px;
-  padding: 5px; }
-form input[type='password'] {
-  display: block;
-  width: 100%;
-  font-size: 0.875em;
-  color: #5A5A5A;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  padding: 5px; }
-form input[type='submit'] {
+  padding: 5px;
+  border: 1px solid #5A5A5A;
+  box-sizing: border-box; }
+form input[type='submit'], form input[type='button'] {
   display: block;
   font-weight: 400;
   font-size: 0.875em;
@@ -220,7 +234,25 @@ form input[type='submit'] {
   padding: 15px 30px 15px 30px;
   color: white;
   border: 1px solid lightgray;
-  background-color: #4990E2; }
+  background-color: #4990E2;
+  cursor: pointer; }
+form input[type='button'].upload {
+  font-weight: 400;
+  font-size: 0.75em;
+  padding: 10px 25px 10px 25px;
+  margin-top: 5px;
+  margin-bottom: 20px; }
+form textarea {
+  height: 200px; }
+form table {
+  width: 100%;
+  border-collapse: collapse; }
+  form table td {
+    font-weight: 300;
+    font-size: 0.875em;
+    border-bottom: 1px solid lightgray;
+    padding-top: 7px;
+    padding-bottom: 7px; }
 
 .my-band {
   font-size: 0;
@@ -228,7 +260,8 @@ form input[type='submit'] {
   margin-right: auto;
   max-width: 900px;
   min-height: 700px;
-  padding-top: 100px; }
+  padding-top: 100px;
+  display: block; }
 
 .new-account {
   width: 50%;
@@ -247,6 +280,25 @@ form input[type='submit'] {
   box-sizing: border-box;
   padding-left: 50px;
   padding-right: 50px; }
+
+.band-profile {
+  width: 100%;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding-top: 30px; }
+  .band-profile section {
+    margin-bottom: 40px; }
+  .band-profile section.members {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #5A5A5A; }
 
 .home {
   width: 66.66667%;
