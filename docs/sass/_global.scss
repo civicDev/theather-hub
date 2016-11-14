@@ -1,0 +1,29 @@
+
+body {
+  @include row();
+  font-family: $font-stack;
+  color: $primary-color;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: em(18);
+  color: $primary-color;
+  margin-top: $big-margin;
+  margin-bottom: $small-margin;
+}
+
+a {
+  color: $link-color;
+}
+
+a:visited {
+  color: $link-color;
+}
+
+
+
+.visible-block {
+  display: block;
+}

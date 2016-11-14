@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600&subset=latin-ext');
+
+$font-stack:    'Open Sans', serif;
+$primary-color: #5A5A5A;
+$light-color: white;
+$separator-color: #5A5A5A;
+$link-color: #1C79E8;
+
+$menu-selection-color: #F8E81C;
+$menu-spacing: 27px;
+
+$page-margin: 48px;
+$big-margin: 30px;
+$small-margin: 20px;
+
+$mobile-page-margin: 18px;
+$mobile-menu-spacing: 0px;
+$mobile-menu-toggle-size: 27px;
+
+$separator-height: 4px;
+
+$browser-context: 16; // Default, used for em calculations

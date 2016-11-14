@@ -1,0 +1,122 @@
+header {
+  @include col(1, 1, 0);
+  .logo {
+    display: inline-block;
+    margin-left: $page-margin;
+    margin-right: $page-margin;
+    margin-top: $page-margin;
+  }
+  nav {
+    display: inline-block;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        display: inline-block;
+        margin-left: 0px;
+        margin-right: $menu-spacing;
+        padding: 0;
+        a {
+          text-decoration: none;
+          color: $primary-color;
+        }
+        a:visited {
+          color: $primary-color;
+        }
+      }
+
+      li.selected {
+        border-bottom: 4px solid $menu-selection-color;
+      }
+    }
+  }
+
+  .toggleMenu {
+    display: none;
+    content: url(../img/menu_gray.svg);
+    width: $mobile-menu-toggle-size;
+    height: $mobile-menu-toggle-size;
+    position: absolute;
+    right: $mobile-page-margin;
+    top: $mobile-page-margin;
+    cursor: pointer;
+  }
+  .header-separator {
+    background-color: $separator-color;
+    height: $separator-height;
+    margin-top: 7px;
+  }
+  .slideshow {
+    width: 100%;
+    height: 180px;
+    //background-color: black;
+    background-image: url('../img/slide.png');
+    background-size: 100%;
+    background-position-y: -85px;
+    opacity: 0.88;
+    position: relative;
+  }
+  .slideinfo {
+    position: absolute;
+    right: $page-margin;
+    bottom: $small-margin;
+    color: $light-color;
+    text-align: right;
+    .title {
+      font-size: em(14);
+    }
+    .location {
+      font-size: em(12);
+      //font-style: italic;
+      font-weight: 300;
+    }
+    .date {
+      @extend .location
+    }
+  }
+}
+
+
+@media only screen and (min-width: 650px) and (max-width: 860px) {
+  .slideshow {
+    display: block !important;
+  }
+}
+
+
+
+@media only screen and (max-width: 860px) {
+  header {  
+    position: relative;
+    .logo {
+      margin: $mobile-page-margin;
+    }
+    nav {
+      display: none;
+      width:100%;
+      ul {
+        margin-bottom: $mobile-page-margin;
+        li {
+          display: block;
+          margin-left: 14px;
+          padding-left: 5px;
+          margin-right: 0px;
+          margin-top: $mobile-menu-spacing;
+          margin-bottom: $mobile-menu-spacing;
+          border-left: 4px solid white;
+        }
+        li.selected {
+          border-left: 4px solid $menu-selection-color;
+          border-bottom: none;
+        }
+      }
+    }
+
+    .toggleMenu {
+      display: block;
+    }
+    .slideshow {
+      display: none;
+    }
+  }
+}

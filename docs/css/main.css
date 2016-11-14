@@ -18,6 +18,9 @@ a {
 a:visited {
   color: #1C79E8; }
 
+.visible-block {
+  display: block; }
+
 header {
   width: 100%;
   font-size: 16px;
@@ -81,6 +84,34 @@ header {
       font-size: 0.75em;
       font-weight: 300; }
 
+@media only screen and (min-width: 650px) and (max-width: 860px) {
+  .slideshow {
+    display: block !important; } }
+@media only screen and (max-width: 860px) {
+  header {
+    position: relative; }
+    header .logo {
+      margin: 18px; }
+    header nav {
+      display: none;
+      width: 100%; }
+      header nav ul {
+        margin-bottom: 18px; }
+        header nav ul li {
+          display: block;
+          margin-left: 14px;
+          padding-left: 5px;
+          margin-right: 0px;
+          margin-top: 0px;
+          margin-bottom: 0px;
+          border-left: 4px solid white; }
+        header nav ul li.selected {
+          border-left: 4px solid #F8E81C;
+          border-bottom: none; }
+    header .toggleMenu {
+      display: block; }
+    header .slideshow {
+      display: none; } }
 .events {
   font-size: 0; }
   .events .event {
@@ -107,8 +138,8 @@ header {
         font-size: 0.875em; }
       .events .event .info .cast {
         font-weight: 300;
-        font-style: italic;
         font-size: 0.875em;
+        font-style: italic;
         margin-bottom: 20px; }
       .events .event .info .info-item {
         font-weight: 300;
@@ -117,6 +148,36 @@ header {
       font-weight: 600;
       font-size: 0.875em; }
 
+.event-day {
+  margin-bottom: 30px; }
+  .event-day .title {
+    font-weight: 600;
+    font-size: 0.875em;
+    font-style: italic;
+    border-bottom: 1px solid lightgray; }
+
+@media only screen and (max-width: 650px) {
+  .events .event {
+    width: 100%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0; }
+    .events .event img {
+      height: auto !important;
+      width: 100% !important;
+      margin-right: 0; }
+    .events .event .info .cast {
+      margin-bottom: 5px; }
+    .events .event .additional-details {
+      margin-bottom: 20px; } }
+@media only screen and (max-width: 860px) {
+  .events .event img {
+    height: 380px;
+    width: 260px;
+    margin-right: 0; } }
 main {
   width: 66.66667%;
   font-size: 16px;
@@ -127,13 +188,6 @@ main {
   padding-right: 0; }
   main section {
     padding-left: 48px; }
-    main section .event-day {
-      margin-bottom: 30px; }
-      main section .event-day .title {
-        font-style: italic;
-        font-size: 0.875em;
-        font-weight: 600;
-        border-bottom: 1px solid lightgray; }
 
 aside {
   width: 33.33333%;
@@ -148,74 +202,10 @@ aside {
   aside section {
     margin-bottom: 40px; }
     aside section p {
-      font-size: 0.875em;
       font-weight: 300;
+      font-size: 0.875em;
       text-align: justify; }
 
-@media only screen and (min-width: 650px) and (max-width: 860px) {
-  .slideshow {
-    display: block !important; } }
-@media only screen and (max-width: 650px) {
-  .events .event {
-    width: 100%;
-    font-size: 16px;
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0; }
-    .events .event img {
-      height: auto !important;
-      width: 100% !important;
-      margin-right: 0; }
-    .events .event .info {
-      display: inline-block;
-      width: 250px;
-      vertical-align: top; }
-      .events .event .info .name {
-        font-weight: 600;
-        font-size: 0.875em; }
-      .events .event .info .cast {
-        font-weight: 300;
-        font-style: italic;
-        font-size: 0.875em;
-        margin-bottom: 20px; }
-      .events .event .info .info-item {
-        font-weight: 300;
-        font-size: 0.875em; }
-    .events .event .additional-details {
-      font-weight: 600;
-      font-size: 0.875em; } }
-@media only screen and (max-width: 860px) {
-  header {
-    position: relative; }
-    header .logo {
-      margin: 18px; }
-    header nav {
-      display: none;
-      width: 100%; }
-      header nav ul {
-        margin-bottom: 18px; }
-        header nav ul li {
-          display: block;
-          margin-left: 14px;
-          padding-left: 5px;
-          margin-right: 0px;
-          margin-top: 0px;
-          margin-bottom: 0px;
-          border-left: 4px solid white; }
-        header nav ul li.selected {
-          border-left: 4px solid #F8E81C;
-          border-bottom: none; }
-    header .toggleMenu {
-      display: block; }
-    header .slideshow {
-      display: none; }
-
-  .events .event img {
-    height: 380px;
-    width: 260px;
-    margin-right: 0; } }
 @media only screen and (max-width: 1024px) {
   main {
     width: 100%;
@@ -241,7 +231,5 @@ aside {
     padding-right: 18px; }
     aside section {
       border-top: 1px solid lightgray; } }
-.visible-block {
-  display: block; }
 
 /*# sourceMappingURL=main.css.map */
