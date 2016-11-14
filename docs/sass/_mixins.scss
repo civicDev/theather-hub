@@ -41,3 +41,13 @@
     font-size: em(14);
     font-style: italic;
 }
+
+@mixin font-large-bold {
+    font-weight: 600;
+    font-size: em(16);
+}
+
+@mixin font-button {
+    font-weight: 400;
+    font-size: em(14);
+}

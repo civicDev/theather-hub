@@ -1,6 +1,6 @@
 
 body {
-  @include row();
+  @include row;
   font-family: $font-stack;
   color: $primary-color;
   margin: 0;

@@ -1,6 +1,6 @@
 
 .events {
-  @include row();
+  @include row;
   .event {
     @include col(1,2,0);
     margin-top: $small-margin;
@@ -17,18 +17,18 @@
       vertical-align: top;
 
       .name {
-        @include font-main-bold();
+        @include font-main-bold;
       }
       .cast {
-        @include font-main-italic();
+        @include font-main-italic;
         margin-bottom: $small-margin;
       }
       .info-item {
-          @include font-main();
+          @include font-main;
       }
     }
     .additional-details {
-      @include font-main-bold();
+      @include font-main-bold;
     }
   }
 }
@@ -36,7 +36,7 @@
 .event-day {
     margin-bottom: $big-margin; 
     .title {
-    @include font-main-bold-italic();
+    @include font-main-bold-italic;
     border-bottom: 1px solid lightgray;
     }
 }

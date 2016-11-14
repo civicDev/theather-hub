@@ -6,8 +6,10 @@
 @import 'header';
 @import 'events';
 
+@import 'forms';
+@import 'login';
 
-main {
+.home {
   @include col(8, 12, 0);
   section {
     padding-left: $page-margin;
@@ -22,7 +24,7 @@ aside{
   section {
     margin-bottom: 40px;
     p {
-      @include font-main();
+      @include font-main;
       text-align: justify;
     }
   }

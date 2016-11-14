@@ -178,7 +178,77 @@ header {
     height: 380px;
     width: 260px;
     margin-right: 0; } }
-main {
+form h1 {
+  border-bottom: 1px solid #5A5A5A;
+  margin-bottom: 30px; }
+form p {
+  font-weight: 300;
+  font-size: 0.875em; }
+form label {
+  display: block;
+  font-weight: 600;
+  font-size: 1em; }
+form .checkbox {
+  margin-bottom: 20px; }
+  form .checkbox input[type='checkbox'] {
+    display: inline-block; }
+  form .checkbox label {
+    display: inline-block;
+    font-weight: 300;
+    font-size: 0.875em; }
+form input[type='text'] {
+  display: block;
+  width: 100%;
+  font-size: 0.875em;
+  color: #5A5A5A;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 5px; }
+form input[type='password'] {
+  display: block;
+  width: 100%;
+  font-size: 0.875em;
+  color: #5A5A5A;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 5px; }
+form input[type='submit'] {
+  display: block;
+  font-weight: 400;
+  font-size: 0.875em;
+  margin-top: 40px;
+  padding: 15px 30px 15px 30px;
+  color: white;
+  border: 1px solid lightgray;
+  background-color: #4990E2; }
+
+.my-band {
+  font-size: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  min-height: 700px;
+  padding-top: 100px; }
+
+.new-account {
+  width: 50%;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 50px;
+  padding-right: 50px; }
+
+.login {
+  width: 50%;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 50px;
+  padding-right: 50px; }
+
+.home {
   width: 66.66667%;
   font-size: 16px;
   display: inline-block;
@@ -186,7 +256,7 @@ main {
   box-sizing: border-box;
   padding-left: 0;
   padding-right: 0; }
-  main section {
+  .home section {
     padding-left: 48px; }
 
 aside {
