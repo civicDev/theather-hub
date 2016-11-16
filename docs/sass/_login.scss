@@ -8,10 +8,20 @@
     display: block;
 }
 
-.new-account {
+.new-account, .login {
     @include col(1, 2, 50px);
 }
 
-.login {
-    @include col(1, 2, 50px);
+@media only screen and (max-width: 650px) {
+
+    .my-band {
+        padding-top: $big-margin;
+    }
+
+    .new-account, .login {
+        @include col(1, 1, 0);
+        padding: 0 $mobile-page-margin;
+        margin-bottom: 2 * $big-margin;
+    }
+
 }

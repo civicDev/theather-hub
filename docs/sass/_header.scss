@@ -1,3 +1,28 @@
+nav {
+  display: inline-block;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      display: inline-block;
+      margin-left: 0px;
+      margin-right: $menu-spacing;
+      padding: 0;
+      a {
+        text-decoration: none;
+        color: $primary-color;
+      }
+      a:visited {
+        color: $primary-color;
+      }
+    }
+
+    li.selected {
+      border-bottom: 4px solid $menu-selection-color;
+    }
+  }
+}
+
 header {
   @include col(1, 1, 0);
   .logo {
@@ -5,30 +30,6 @@ header {
     margin-left: $page-margin;
     margin-right: $page-margin;
     margin-top: $page-margin;
-  }
-  nav {
-    display: inline-block;
-    ul {
-      margin: 0;
-      padding: 0;
-      li {
-        display: inline-block;
-        margin-left: 0px;
-        margin-right: $menu-spacing;
-        padding: 0;
-        a {
-          text-decoration: none;
-          color: $primary-color;
-        }
-        a:visited {
-          color: $primary-color;
-        }
-      }
-
-      li.selected {
-        border-bottom: 4px solid $menu-selection-color;
-      }
-    }
   }
 
   .sub-menu {

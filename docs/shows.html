@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Theater Hub</title>
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="js/zepto.min.js"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    
+    <header>
+        <div class="logo">
+            <svg id="logosvg" width="49px" height="26px" viewBox="38 10 49 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                <path d="M53.084,36 L44.516,36 L44.516,17.748 L38.252,17.748 L38.252,10.512 L59.348,10.512 L59.348,17.748 L53.084,17.748 L53.084,36 Z M77.528,26.316 L70.544,26.316 L70.544,36 L61.976,36 L61.976,10.512 L70.508,10.512 L70.508,19.152 L77.492,19.152 L77.492,10.512 L86.096,10.512 L86.096,36 L77.528,36 L77.528,26.316 Z" id="TH" stroke="none" fill="#4A4A4A" fill-rule="evenodd"></path>
+            </svg>
+        </div>
+        <div class="toggleMenu">&nbsp;</div>
+        <nav>
+            <ul>
+                <li><a href="#">Prima pagină</a></li>
+                <li><a href="#">Spectacole</a></li>
+                <li><a href="#">Trupe</a></li>
+                <li><a href="#">Book a show</a></li>
+                <li><a href="#">Susținere trupe</a></li>
+                <li class="selected"><a href="#">MyBAND</a></li>
+            </ul>
+        </nav>
+        <div class="header-separator">&nbsp;</div>
+        <nav class="sub-menu">
+            <ul>
+                <li><a href="#">Detalii trupă</a></li>
+                <li class="selected"><a href="#">Spectacolele noastre</a></li>
+                <li><a href="#">Evenimente</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="band-shows">
+        <form>
+            <section class="shows">
+                <h1>Spectacolele noastre</h1>
+                
+                <nav class="shows">
+                    <ul>
+                        <li class="selected"><a href="#"><img src="img/cum se duce.jpg"/></a></li>
+                        <li><a href="#"><img src="img/valar improvis.jpg"/></a></li>
+                        <li><a href="#"><img src="img/amanta de la pranz.jpg"/></a></li>
+                    </ul>
+                </ul>
+
+            </section>
+            <section class="show-details">
+                    <h1>Cum se duce totul dracu'</h1>
+
+                    <label for="show-name">Nume</label>
+                    <input name="show-name" type="text"/>
+
+                    <label for="show-description">Descriere</label>
+                    <textarea name="show-description"></textarea>
+
+                    <label for="show-cast">Descriere</label>
+                    <textarea name="show-cast"></textarea>
+                    
+                    <label for="show-picture">Poză profil</label>
+                    <input name="show-picture" type="button" class="upload" value="Upload"/>
+
+                    <p>
+                        Pentru rezultate optime folosiți o imagine tip afiș cu aspect ratio (lățime/înălțime) de 0.75
+                    </p>
+            </section>
+            <section class="actions">
+                <input name="save" type="submit" value="Salvare"/>
+                <input name="delete" type="submit" value="Ștergere"/>
+            </section>
+        </form>    
+
+    </main>
+
+    <footer>
+    </footer>
+
+    <script>
+        $('.toggleMenu').click(function() {
+            $('header nav').toggleClass('visible-block');
+        });
+    </script>
+
+</body>
+</html>

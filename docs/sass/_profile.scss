@@ -1,4 +1,4 @@
-.band-profile {
+.band-profile, .band-shows {
     @include col(1, 1, 0);
     max-width: 700px;
     margin-left: auto;
@@ -8,11 +8,25 @@
 
     section {
         margin-bottom: 2 * $small-margin;
+        margin-left: $mobile-page-margin;
+        margin-right: $mobile-page-margin;
+    }
+    
+    section.shows {
+        text-align: center;
+        margin-bottom: 2 * $big-margin;
     }
 
-    section.members {
-        padding-bottom: 2 * $small-margin;
-        border-bottom: 1px solid $primary-color;
+    nav.shows {
+        img {
+            height: 190px;
+        }
+
+        ul {
+            li {
+                margin-bottom: $small-margin;
+            }
+        }
     }
 
 }

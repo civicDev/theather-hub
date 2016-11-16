@@ -31,6 +31,24 @@ footer {
   margin-top: 100px;
   border-top: 1px solid lightgray; }
 
+nav {
+  display: inline-block; }
+  nav ul {
+    margin: 0;
+    padding: 0; }
+    nav ul li {
+      display: inline-block;
+      margin-left: 0px;
+      margin-right: 27px;
+      padding: 0; }
+      nav ul li a {
+        text-decoration: none;
+        color: #5A5A5A; }
+      nav ul li a:visited {
+        color: #5A5A5A; }
+    nav ul li.selected {
+      border-bottom: 4px solid #F8E81C; }
+
 header {
   width: 100%;
   font-size: 16px;
@@ -44,23 +62,6 @@ header {
     margin-left: 48px;
     margin-right: 48px;
     margin-top: 48px; }
-  header nav {
-    display: inline-block; }
-    header nav ul {
-      margin: 0;
-      padding: 0; }
-      header nav ul li {
-        display: inline-block;
-        margin-left: 0px;
-        margin-right: 27px;
-        padding: 0; }
-        header nav ul li a {
-          text-decoration: none;
-          color: #5A5A5A; }
-        header nav ul li a:visited {
-          color: #5A5A5A; }
-      header nav ul li.selected {
-        border-bottom: 4px solid #F8E81C; }
   header .sub-menu {
     font-weight: 600;
     font-size: 0.875em;
@@ -207,6 +208,11 @@ form label {
   display: block;
   font-weight: 600;
   font-size: 1em; }
+form section.actions {
+  border-top: 1px solid #5A5A5A; }
+  form section.actions input {
+    display: inline-block;
+    margin-right: 20px; }
 form .checkbox {
   margin-bottom: 20px; }
   form .checkbox input[type='checkbox'] {
@@ -263,7 +269,7 @@ form table {
   padding-top: 100px;
   display: block; }
 
-.new-account {
+.new-account, .login {
   width: 50%;
   font-size: 16px;
   display: inline-block;
@@ -272,16 +278,21 @@ form table {
   padding-left: 50px;
   padding-right: 50px; }
 
-.login {
-  width: 50%;
-  font-size: 16px;
-  display: inline-block;
-  vertical-align: top;
-  box-sizing: border-box;
-  padding-left: 50px;
-  padding-right: 50px; }
+@media only screen and (max-width: 650px) {
+  .my-band {
+    padding-top: 30px; }
 
-.band-profile {
+  .new-account, .login {
+    width: 100%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+    padding: 0 18px;
+    margin-bottom: 60px; } }
+.band-profile, .band-shows {
   width: 100%;
   font-size: 16px;
   display: inline-block;
@@ -294,11 +305,17 @@ form table {
   margin-right: auto;
   display: block;
   padding-top: 30px; }
-  .band-profile section {
-    margin-bottom: 40px; }
-  .band-profile section.members {
-    padding-bottom: 40px;
-    border-bottom: 1px solid #5A5A5A; }
+  .band-profile section, .band-shows section {
+    margin-bottom: 40px;
+    margin-left: 18px;
+    margin-right: 18px; }
+  .band-profile section.shows, .band-shows section.shows {
+    text-align: center;
+    margin-bottom: 60px; }
+  .band-profile nav.shows img, .band-shows nav.shows img {
+    height: 190px; }
+  .band-profile nav.shows ul li, .band-shows nav.shows ul li {
+    margin-bottom: 20px; }
 
 .home {
   width: 66.66667%;
