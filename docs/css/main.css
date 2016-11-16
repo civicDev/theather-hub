@@ -329,7 +329,7 @@ aside {
       text-align: justify; }
 
 @media only screen and (max-width: 1024px) {
-  main {
+  .home {
     width: 100%;
     font-size: 16px;
     display: inline-block;
@@ -337,7 +337,7 @@ aside {
     box-sizing: border-box;
     padding-left: 0;
     padding-right: 0; }
-    main section {
+    .home section {
       padding-left: 18px;
       padding-right: 18px; }
 
