@@ -11,10 +11,13 @@
         margin-left: $mobile-page-margin;
         margin-right: $mobile-page-margin;
     }
-    
+
     section.shows {
         text-align: center;
         margin-bottom: 2 * $big-margin;
+        h1 {
+            text-align: left;
+        }
     }
 
     nav.shows {

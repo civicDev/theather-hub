@@ -312,6 +312,8 @@ form table {
   .band-profile section.shows, .band-shows section.shows {
     text-align: center;
     margin-bottom: 60px; }
+    .band-profile section.shows h1, .band-shows section.shows h1 {
+      text-align: left; }
   .band-profile nav.shows img, .band-shows nav.shows img {
     height: 190px; }
   .band-profile nav.shows ul li, .band-shows nav.shows ul li {
