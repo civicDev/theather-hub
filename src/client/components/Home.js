@@ -2,6 +2,7 @@ import React from "react";
 import {groupBy, keys, values, zip, reduce, map} from "lodash/fp";
 import {Link} from "react-router";
 import {connect} from "react-redux";
+import Slideshow from "./Slideshow";
 
 const Event = ({banner, name, cast, duration, contact, price, time, place}) => (
   <div className="event">
@@ -82,8 +83,11 @@ const Home = ({loading, events = []}) => {
 
   return (
     <div>
-      {body}
-      <Aside />
+      <Slideshow/>
+      <div>
+        {body}
+        <Aside />
+      </div>
     </div>
   );
 };

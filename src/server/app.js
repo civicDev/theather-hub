@@ -1,5 +1,6 @@
 import express from "express";
 import serialize from "serialize-javascript";
+import session from "express-session";
 
 import React from "react"
 import { renderToString } from "react-dom/server"
@@ -31,6 +32,10 @@ const HTML = ({ content, store }) => (
 const app = express();
 
 app.use(express.static("public"));
+app.use(session({
+  secret: 'keyboard cat',
+  saveUninitialized: true
+}))
 
 app.get("/api/events", function(req, res){
   res.json([{
@@ -69,9 +74,21 @@ app.get("/api/events", function(req, res){
   }]);
 });
 
+app.get("/api/caca", function(req, res){
+  res.send(req.session);
+
+});
+
 app.use(function (req, res, next) {
+  const {session} = req;
   const memoryHistory = createMemoryHistory(req.url)
-  const store = createStore(reducer, {});
+  const store = createStore(reducer, {
+    myBand : {
+      isLoggedIn : false,
+      user : session.user
+    }
+  });
+
   const history = syncHistoryWithStore(memoryHistory, store);
   const routes = AppRoutes({dispatch : store.dispatch});
   match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {

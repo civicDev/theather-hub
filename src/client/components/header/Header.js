@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import Logo from "./Logo";
-import Slideshow from "./Slideshow";
 import {headerMenuToggle} from "../../actions/header";
 import {Link} from "react-router";
 
@@ -37,8 +36,6 @@ const Header = ({dispatch, menuVisisble, currentLink}) => {
             </ul>
         </nav>
         <div className="header-separator">&nbsp;</div>
-        <Slideshow/>
-
     </header>
   );
 };
@@ -50,8 +47,8 @@ function currentLink(state){
 
 function mapStateToProps(state){
   return {
+    ...state.header,
     currentLink : currentLink(state),
-    ...state.header
   };
 }
 

@@ -45310,7 +45310,7 @@ var App = function App(_ref) {
 
 exports.default = App;
 
-},{"./header":622,"react":257}],618:[function(require,module,exports){
+},{"./header":623,"react":257}],618:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45330,6 +45330,10 @@ var _fp = require("lodash/fp");
 var _reactRouter = require("react-router");
 
 var _reactRedux = require("react-redux");
+
+var _Slideshow = require("./Slideshow");
+
+var _Slideshow2 = _interopRequireDefault(_Slideshow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45534,8 +45538,13 @@ var Home = function Home(_ref6) {
   return _react2.default.createElement(
     "div",
     null,
-    body,
-    _react2.default.createElement(Aside, null)
+    _react2.default.createElement(_Slideshow2.default, null),
+    _react2.default.createElement(
+      "div",
+      null,
+      body,
+      _react2.default.createElement(Aside, null)
+    )
   );
 };
 
@@ -45545,7 +45554,369 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Home);
 
-},{"lodash/fp":51,"react":257,"react-redux":190,"react-router":226}],619:[function(require,module,exports){
+},{"./Slideshow":620,"lodash/fp":51,"react":257,"react-redux":190,"react-router":226}],619:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require("react-redux");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Login = function Login() {
+    return _react2.default.createElement(
+        "main",
+        { className: "my-band" },
+        _react2.default.createElement(
+            "div",
+            { className: "new-account" },
+            _react2.default.createElement(
+                "form",
+                null,
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Doresc un cont nou"
+                ),
+                _react2.default.createElement(
+                    "p",
+                    null,
+                    "Suspendisse euismod diam vel massa ornare placerat. Phasellus eu nisl in elit scelerisque ultricies. Aliquam congue orci sapien, ac mattis risus lacinia ut. Ut finibus facilisis leo, vitae fringilla tellus condimentum et."
+                ),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "new-account-email" },
+                    "E-mail"
+                ),
+                _react2.default.createElement("input", { name: "new-account-email", type: "text" }),
+                _react2.default.createElement("input", { name: "register", type: "submit", value: "\xCEnregistrare" })
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "login" },
+            _react2.default.createElement(
+                "form",
+                null,
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Am cont"
+                ),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "login-email" },
+                    "E-mail"
+                ),
+                _react2.default.createElement("input", { name: "login-email", type: "text" }),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "login-password" },
+                    "Parol\u0103"
+                ),
+                _react2.default.createElement("input", { name: "login-password", type: "password" }),
+                _react2.default.createElement(
+                    "div",
+                    { className: "checkbox" },
+                    _react2.default.createElement("input", { name: "login-remember", type: "checkbox" }),
+                    _react2.default.createElement(
+                        "label",
+                        { htmlFor: "login-remember" },
+                        "Vreau s\u0103 r\u0103m\xE2n logat"
+                    )
+                ),
+                _react2.default.createElement("input", { name: "login", type: "submit", value: "Login" })
+            )
+        )
+    );
+};
+
+var Profile = function Profile() {
+    return _react2.default.createElement(
+        "main",
+        { className: "band-profile" },
+        _react2.default.createElement(
+            "form",
+            null,
+            _react2.default.createElement(
+                "section",
+                { className: "details" },
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Detalii trup\u0103"
+                ),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "band-name" },
+                    "Nume"
+                ),
+                _react2.default.createElement("input", { name: "band-name", type: "text" }),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "band-founded" },
+                    "An \xEEnfiin\u021Bare"
+                ),
+                _react2.default.createElement("input", { name: "band-founded", type: "text" }),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "band-picture" },
+                    "Poz\u0103 profil"
+                ),
+                _react2.default.createElement("input", { name: "band-picture", type: "button", className: "upload", value: "Upload" }),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "band-description" },
+                    "Descriere"
+                ),
+                _react2.default.createElement("textarea", { name: "band-description" }),
+                _react2.default.createElement(
+                    "label",
+                    { htmlFor: "band-city" },
+                    "Ora\u0219 re\u0219edin\u021B\u0103"
+                ),
+                _react2.default.createElement("input", { name: "band-city", type: "text" })
+            ),
+            _react2.default.createElement(
+                "section",
+                { className: "members" },
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Membri"
+                ),
+                _react2.default.createElement(
+                    "table",
+                    null,
+                    _react2.default.createElement(
+                        "tbody",
+                        null,
+                        _react2.default.createElement(
+                            "tr",
+                            null,
+                            _react2.default.createElement(
+                                "td",
+                                { className: "name" },
+                                "Florin Popescu"
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "fb-profile" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "https://www.facebook.com/florinpopescu"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "edit" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "Modific\u0103"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "delete" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "\u0218terge"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "tr",
+                            null,
+                            _react2.default.createElement(
+                                "td",
+                                { className: "name" },
+                                "Ion Ionescu"
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "fb-profile" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "https://www.facebook.com/ionescu96"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "edit" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "Modific\u0103"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "delete" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "\u0218terge"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "tr",
+                            null,
+                            _react2.default.createElement(
+                                "td",
+                                { className: "name" },
+                                "Andrei Carambol"
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "fb-profile" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "https://www.facebook.com/carambol"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "edit" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "Modific\u0103"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "delete" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "\u0218terge"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "tr",
+                            null,
+                            _react2.default.createElement(
+                                "td",
+                                { className: "name" },
+                                "Corina Alina"
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "fb-profile" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "https://www.facebook.com/corinalina"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "edit" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "Modific\u0103"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "td",
+                                { className: "delete" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "" },
+                                    "\u0218terge"
+                                )
+                            )
+                        )
+                    )
+                )
+            ),
+            _react2.default.createElement(
+                "section",
+                { className: "actions" },
+                _react2.default.createElement("input", { name: "login", type: "submit", value: "Salvare" })
+            )
+        )
+    );
+};
+
+var MyBand = function MyBand(_ref) {
+    var isLoggedIn = _ref.isLoggedIn,
+        bandInfo = _ref.bandInfo,
+        dispatch = _ref.dispatch;
+
+    if (!isLoggedIn) {
+        return _react2.default.createElement(Login, { dispatch: dispatch });
+    }
+    return _react2.default.createElement(Profile, { dispatch: dispatch });
+};
+
+function mapStateToProps(state) {
+    return state.myBand;
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(MyBand);
+
+},{"react":257,"react-redux":190}],620:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Slideshow = function Slideshow() {
+
+    var slideshowStyle = {
+        backgroundImage: "url(../img/slide.png)"
+    };
+
+    return _react2.default.createElement(
+        "div",
+        { className: "slideshow", style: slideshowStyle },
+        _react2.default.createElement(
+            "div",
+            { className: "slideinfo" },
+            _react2.default.createElement(
+                "div",
+                { className: "title" },
+                "P\u0103h\u0103relul cu nectar"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "location" },
+                "Teatrul Elisabeta, Bucure\u0219ti"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "date" },
+                "S\xE2mb\u0103t\u0103, 12 Noiembrie, ora 11"
+            )
+        )
+    );
+};
+
+exports.default = Slideshow;
+
+},{"react":257}],621:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45563,10 +45934,6 @@ var _reactRedux = require("react-redux");
 var _Logo = require("./Logo");
 
 var _Logo2 = _interopRequireDefault(_Logo);
-
-var _Slideshow = require("./Slideshow");
-
-var _Slideshow2 = _interopRequireDefault(_Slideshow);
 
 var _header = require("../../actions/header");
 
@@ -45656,8 +46023,7 @@ var Header = function Header(_ref) {
       "div",
       { className: "header-separator" },
       "\xA0"
-    ),
-    _react2.default.createElement(_Slideshow2.default, null)
+    )
   );
 };
 
@@ -45666,14 +46032,14 @@ function currentLink(state) {
 }
 
 function mapStateToProps(state) {
-  return _extends({
+  return _extends({}, state.header, {
     currentLink: currentLink(state)
-  }, state.header);
+  });
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
-},{"../../actions/header":615,"./Logo":620,"./Slideshow":621,"react":257,"react-redux":190,"react-router":226}],620:[function(require,module,exports){
+},{"../../actions/header":615,"./Logo":622,"react":257,"react-redux":190,"react-router":226}],622:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45698,53 +46064,7 @@ exports.default = function () {
   );
 };
 
-},{"react":257}],621:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Slideshow = function Slideshow() {
-
-    var slideshowStyle = {
-        backgroundImage: "url(../img/slide.png)"
-    };
-
-    return _react2.default.createElement(
-        "div",
-        { className: "slideshow", style: slideshowStyle },
-        _react2.default.createElement(
-            "div",
-            { className: "slideinfo" },
-            _react2.default.createElement(
-                "div",
-                { className: "title" },
-                "P\u0103h\u0103relul cu nectar"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "location" },
-                "Teatrul Elisabeta, Bucure\u0219ti"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "date" },
-                "S\xE2mb\u0103t\u0103, 12 Noiembrie, ora 11"
-            )
-        )
-    );
-};
-
-exports.default = Slideshow;
-
-},{"react":257}],622:[function(require,module,exports){
+},{"react":257}],623:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45759,7 +46079,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _Header2.default;
 
-},{"./Header":619}],623:[function(require,module,exports){
+},{"./Header":621}],624:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45793,7 +46113,7 @@ var configEpicMiddleware = exports.configEpicMiddleware = function configEpicMid
   return (0, _reduxObservable.createEpicMiddleware)(loadEventsEpic);
 };
 
-},{"./actions/home":616,"redux-observable":262,"rxjs":278,"rxjs/observable/dom/ajax":442}],624:[function(require,module,exports){
+},{"./actions/home":616,"redux-observable":262,"rxjs":278,"rxjs/observable/dom/ajax":442}],625:[function(require,module,exports){
 "use strict";
 
 var _react = require("react");
@@ -45830,7 +46150,7 @@ _reactDom2.default.render(_react2.default.createElement(
   _react2.default.createElement(_reactRouter.Router, { history: history, routes: routes })
 ), document.getElementById("root"));
 
-},{"./routes":628,"./store":629,"react":257,"react-dom":61,"react-redux":190,"react-router":226,"react-router-redux":196}],625:[function(require,module,exports){
+},{"./routes":630,"./store":631,"react":257,"react-dom":61,"react-redux":190,"react-router":226,"react-router-redux":196}],626:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45854,7 +46174,7 @@ exports.default = function () {
 
 var _header = require("../actions/header");
 
-},{"../actions/header":615}],626:[function(require,module,exports){
+},{"../actions/header":615}],627:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45885,7 +46205,7 @@ var _home = require("../actions/home");
 
 ;
 
-},{"../actions/home":616}],627:[function(require,module,exports){
+},{"../actions/home":616}],628:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45900,14 +46220,35 @@ var _home = require("./home");
 
 var _home2 = _interopRequireDefault(_home);
 
+var _myBand = require("./myBand");
+
+var _myBand2 = _interopRequireDefault(_myBand);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   header: _header2.default,
-  home: _home2.default
+  home: _home2.default,
+  myBand: _myBand2.default
 };
 
-},{"./header":625,"./home":626}],628:[function(require,module,exports){
+},{"./header":626,"./home":627,"./myBand":629}],629:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  return state;
+};
+
+;
+
+},{}],630:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45930,6 +46271,10 @@ var _Home = require("./components/Home");
 
 var _Home2 = _interopRequireDefault(_Home);
 
+var _MyBand = require("./components/MyBand");
+
+var _MyBand2 = _interopRequireDefault(_MyBand);
+
 var _home = require("./actions/home");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -45951,6 +46296,7 @@ var AppRoutes = function AppRoutes(_ref) {
   return _react2.default.createElement(
     _reactRouter.Route,
     { path: "/", component: _App2.default },
+    _react2.default.createElement(_reactRouter.Route, { path: "/my-band", components: { content: _MyBand2.default } }),
     _react2.default.createElement(_reactRouter.IndexRoute, { components: { content: _Home2.default }, onEnter: function onEnter() {
         return dispatch(_home.loadEventsAction);
       } }),
@@ -45960,7 +46306,7 @@ var AppRoutes = function AppRoutes(_ref) {
 
 exports.default = AppRoutes;
 
-},{"./actions/home":616,"./components/App":617,"./components/Home":618,"react":257,"react-redux":190,"react-router":226}],629:[function(require,module,exports){
+},{"./actions/home":616,"./components/App":617,"./components/Home":618,"./components/MyBand":619,"react":257,"react-redux":190,"react-router":226}],631:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45992,7 +46338,7 @@ var configureStore = exports.configureStore = function configureStore(initialSta
   return store;
 };
 
-},{"./epics":623,"./reducers":627,"react-router-redux":196,"redux":268}]},{},[624])
+},{"./epics":624,"./reducers":628,"react-router-redux":196,"redux":268}]},{},[625])
 
 
 //# sourceMappingURL=build.js.map
