@@ -5,14 +5,12 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var watchify = require('watchify');
-
+var babelConfig = require("./babel-config");
 
 function compile(watch) {
   var bundler = browserify('./src/client/index.js', {
       debug: true
-  }).transform("babelify", {
-    presets : ["es2015", "react", "stage-1"]
-  });
+  }).transform("babelify", babelConfig);
 
   if(watch){
     bundler = watchify(bundler);

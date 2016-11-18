@@ -1,7 +1,4 @@
-const express = require("express");
-const path    = require("path");
-const app     = express();
+require('babel-core/register')(require("../../babel-config"));
 
-app.use(express.static('public'));
-
-module.exports = app;
+var app = require("./app");
+module.exports = app.default;

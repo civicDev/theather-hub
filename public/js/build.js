@@ -28853,8 +28853,6 @@ exports.default = _Header2.default;
 },{"./Header":273}],277:[function(require,module,exports){
 "use strict";
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -28863,33 +28861,30 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _redux = require("redux");
-
 var _reactRouter = require("react-router");
 
+var _reactRedux = require("react-redux");
+
 var _reactRouterRedux = require("react-router-redux");
-
-var _reducers = require("./reducers");
-
-var _reducers2 = _interopRequireDefault(_reducers);
 
 var _routes = require("./routes");
 
 var _routes2 = _interopRequireDefault(_routes);
 
+var _store = require("./store");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var reducer = (0, _redux.combineReducers)(_extends({}, _reducers2.default, {
-  routing: _reactRouterRedux.routerReducer
-}));
-
-var store = (0, _redux.createStore)(reducer);
-
+var store = (0, _store.configureStore)(window.__initialState__);
 var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
 
-_reactDom2.default.render(_react2.default.createElement(_routes2.default, { store: store, history: history }), document.getElementById("root"));
+_reactDom2.default.render(_react2.default.createElement(
+  _reactRedux.Provider,
+  { store: store },
+  _react2.default.createElement(_reactRouter.Router, { history: history, routes: _routes2.default })
+), document.getElementById("root"));
 
-},{"./reducers":279,"./routes":280,"react":257,"react-dom":61,"react-router":226,"react-router-redux":196,"redux":263}],278:[function(require,module,exports){
+},{"./routes":280,"./store":281,"react":257,"react-dom":61,"react-redux":190,"react-router":226,"react-router-redux":196}],278:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28955,27 +28950,58 @@ var _Home2 = _interopRequireDefault(_Home);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var AppRoutes = function AppRoutes(_ref) {
-  var store = _ref.store,
-      history = _ref.history;
+var NotFound = function NotFound() {
   return _react2.default.createElement(
-    _reactRedux.Provider,
-    { store: store },
+    "main",
+    { className: "home" },
     _react2.default.createElement(
-      _reactRouter.Router,
-      { history: history },
-      _react2.default.createElement(
-        _reactRouter.Route,
-        { path: "/", component: _App2.default },
-        _react2.default.createElement(_reactRouter.IndexRoute, { components: { content: _Home2.default } })
-      )
+      "h1",
+      null,
+      "404"
     )
   );
 };
 
+var AppRoutes = _react2.default.createElement(
+  _reactRouter.Route,
+  { path: "/", component: _App2.default },
+  _react2.default.createElement(_reactRouter.IndexRoute, { components: { content: _Home2.default } }),
+  _react2.default.createElement(_reactRouter.Route, { path: "*", components: { content: NotFound } })
+);
+
 exports.default = AppRoutes;
 
-},{"./components/App":271,"./components/Home":272,"react":257,"react-redux":190,"react-router":226}]},{},[277])
+},{"./components/App":271,"./components/Home":272,"react":257,"react-redux":190,"react-router":226}],281:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.configureStore = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _redux = require("redux");
+
+var _reactRouterRedux = require("react-router-redux");
+
+var _reducers = require("./reducers");
+
+var _reducers2 = _interopRequireDefault(_reducers);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var configureStore = exports.configureStore = function configureStore(initialState) {
+  var reducer = (0, _redux.combineReducers)(_extends({}, _reducers2.default, {
+    routing: _reactRouterRedux.routerReducer
+  }));
+
+  var store = (0, _redux.createStore)(reducer, initialState);
+
+  return store;
+};
+
+},{"./reducers":279,"react-router-redux":196,"redux":263}]},{},[277])
 
 
 //# sourceMappingURL=build.js.map
