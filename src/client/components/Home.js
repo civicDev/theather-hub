@@ -1,6 +1,7 @@
 import React from "react";
 import {groupBy, keys, values, zip, reduce, map} from "lodash/fp";
 import {Link} from "react-router";
+import {connect} from "react-redux";
 
 const Event = ({banner, name, cast, duration, contact, price, time, place}) => (
   <div className="event">
@@ -74,50 +75,21 @@ const Events = ({events}) => (
   </main>
 );
 
-const Home = () => {
-
-  const events = [{
-    id : 0,
-    banner : "img/cum se duce.jpg",
-    name : "Cum Se Duce Totul Dracu'",
-    cast : "Ioana Chelmuș, Florin Frățilă",
-    duration : "1",
-    contact : "0735 026 762",
-    price : "18",
-    time : "20:00",
-    place : "În Culise, București",
-    date : "Sâmbătă, 12 Noiembrie"
-  }, {
-    id : 1,
-    banner : "img/valar improvis.jpg",
-    name : "Valar Improvis'",
-    cast : "Delia Alexandra Riciu, Adriana Bordeanu, Vlad Pasecu, George Dumitru, Andrei Negoita, Bogdan Untilă",
-    duration : "1,5",
-    contact : "0730 744 682",
-    price : "25",
-    time : "22:00",
-    place : "Recul, București",
-    date : "Sâmbătă, 12 Noiembrie"
-  }, {
-    id : 2,
-    banner : "img/amanta de la pranz.jpg",
-    name : "Amanta de la prânz",
-    cast : "George Dumitru, Andrei Negoita, Bogdan Untilă",
-    duration : "1,5",
-    contact : "0730 744 682",
-    price : "20",
-    time : "17:00",
-    place : "Music Club, București",
-    date : "Duminică, 13 Noiembrie"
-  }];
-
+const Home = ({loading, events = []}) => {
+  const body = !loading ?
+    (<Events events={events} />) :
+    (<div className="home">Loading</div>)
 
   return (
     <div>
-      <Events events={events}/>
+      {body}
       <Aside />
     </div>
   );
 };
 
-export default Home;
+function mapStateToProps(state){
+  return state.home;
+}
+
+export default connect(mapStateToProps)(Home);

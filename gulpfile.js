@@ -7,6 +7,26 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var babelConfig = require("./babel-config");
 
+function cleanRequireCache(){
+  for(var i in require.cache){
+    if(i.indexOf("node_modules") === -1){
+      delete require.cache[i];
+    }
+  }
+}
+
+var server = null;
+function restartServer(){
+  if(server){
+    console.log("stopping server");
+    server.close();
+  }
+  cleanRequireCache();
+  server = require("./src/server/index.js").listen(8080, ()=>{
+    console.log("Started on 8080");
+  });
+}
+
 function compile(watch) {
   var bundler = browserify('./src/client/index.js', {
       debug: true
@@ -31,6 +51,7 @@ function compile(watch) {
       console.log('-> bundling...');
       rebundle();
       console.log('-> done bundling...');
+      restartServer();
     });
   }
 
@@ -44,25 +65,7 @@ function watch() {
 gulp.task('build', function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
 
-function cleanRequireCache(){
-  for(var i in require.cache){
-    if(i.indexOf("node_modules") === -1){
-      delete require.cache[i];
-    }
-  }
-}
 
-var server = null;
-function restartServer(){
-  if(server){
-    console.log("stopping server");
-    server.close();
-  }
-  cleanRequireCache();
-  server = require("./src/server/index.js").listen(8080, ()=>{
-    console.log("Started on 8080");
-  });
-}
 
 gulp.task("dev-server", function(){
   watch();
