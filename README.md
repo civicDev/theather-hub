@@ -8,7 +8,3 @@ npm install
 then
 
 gulp dev-server to see the magic
-
-
-
-to build
