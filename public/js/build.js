@@ -45336,6 +45336,25 @@ var savedProfileAction = exports.savedProfileAction = function savedProfileActio
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var LOAD_SHOWS_ACTION = exports.LOAD_SHOWS_ACTION = "LOAD_SHOWS_ACTION";
+var loadShowsAction = exports.loadShowsAction = {
+  type: LOAD_SHOWS_ACTION
+};
+
+var LOADED_SHOWS_ACTION = exports.LOADED_SHOWS_ACTION = "LOADED_SHOWS_ACTION";
+var loadedShowsAction = exports.loadedShowsAction = function loadedShowsAction(shows) {
+  return {
+    type: LOADED_SHOWS_ACTION,
+    payload: shows
+  };
+};
+
+},{}],620:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _react = require("react");
 
@@ -45359,7 +45378,7 @@ var App = function App(_ref) {
 
 exports.default = App;
 
-},{"./header":626,"react":257}],620:[function(require,module,exports){
+},{"./header":628,"react":257}],621:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45449,7 +45468,7 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Bands);
 
-},{"lodash/fp":51,"react":257,"react-redux":190}],621:[function(require,module,exports){
+},{"lodash/fp":51,"react":257,"react-redux":190}],622:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45693,7 +45712,7 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Home);
 
-},{"./Slideshow":623,"lodash/fp":51,"react":257,"react-redux":190,"react-router":226}],622:[function(require,module,exports){
+},{"./Slideshow":625,"lodash/fp":51,"react":257,"react-redux":190,"react-router":226}],623:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46013,7 +46032,32 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(MyBand);
 
-},{"../actions/myBand":618,"react":257,"react-redux":190}],623:[function(require,module,exports){
+},{"../actions/myBand":618,"react":257,"react-redux":190}],624:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require("react-redux");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Shows = function Shows() {
+  return _react2.default.createElement(
+    "div",
+    null,
+    "Show"
+  );
+};
+
+exports.default = (0, _reactRedux.connect)()(Shows);
+
+},{"react":257,"react-redux":190}],625:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46059,7 +46103,7 @@ var Slideshow = function Slideshow() {
 
 exports.default = Slideshow;
 
-},{"react":257}],624:[function(require,module,exports){
+},{"react":257}],626:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46182,7 +46226,7 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
-},{"../../actions/header":616,"./Logo":625,"react":257,"react-redux":190,"react-router":226}],625:[function(require,module,exports){
+},{"../../actions/header":616,"./Logo":627,"react":257,"react-redux":190,"react-router":226}],627:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46207,7 +46251,7 @@ exports.default = function () {
   );
 };
 
-},{"react":257}],626:[function(require,module,exports){
+},{"react":257}],628:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46222,7 +46266,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _Header2.default;
 
-},{"./Header":624}],627:[function(require,module,exports){
+},{"./Header":626}],629:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46243,6 +46287,8 @@ var _home = require("./actions/home");
 var _myBand = require("./actions/myBand");
 
 var _bands = require("./actions/bands");
+
+var _shows = require("./actions/shows");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -46270,13 +46316,21 @@ var loadBandsEpic = function loadBandsEpic(actions) {
   });
 };
 
+var loadShowsEpic = function loadShowsEpic(actions) {
+  return actions.ofType(_shows.LOAD_SHOWS_ACTION).switchMap(function () {
+    return _ajax.ajax.getJSON("/api/shows");
+  }).map(function (shows) {
+    return (0, _shows.loadedShowsAction)(shows);
+  });
+};
+
 var configEpicMiddleware = exports.configEpicMiddleware = function configEpicMiddleware() {
 
-  var rootEpic = (0, _reduxObservable.combineEpics)(saveProfileEpic, loadEventsEpic, loadBandsEpic);
+  var rootEpic = (0, _reduxObservable.combineEpics)(saveProfileEpic, loadEventsEpic, loadBandsEpic, loadShowsEpic);
   return (0, _reduxObservable.createEpicMiddleware)(rootEpic);
 };
 
-},{"./actions/bands":615,"./actions/home":617,"./actions/myBand":618,"redux-observable":262,"rxjs":278,"rxjs/observable/dom/ajax":442}],628:[function(require,module,exports){
+},{"./actions/bands":615,"./actions/home":617,"./actions/myBand":618,"./actions/shows":619,"redux-observable":262,"rxjs":278,"rxjs/observable/dom/ajax":442}],630:[function(require,module,exports){
 "use strict";
 
 var _react = require("react");
@@ -46313,7 +46367,7 @@ _reactDom2.default.render(_react2.default.createElement(
   _react2.default.createElement(_reactRouter.Router, { history: history, routes: routes })
 ), document.getElementById("root"));
 
-},{"./routes":634,"./store":635,"react":257,"react-dom":61,"react-redux":190,"react-router":226,"react-router-redux":196}],629:[function(require,module,exports){
+},{"./routes":636,"./store":637,"react":257,"react-dom":61,"react-redux":190,"react-router":226,"react-router-redux":196}],631:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46344,7 +46398,7 @@ var _bands = require("../actions/bands");
 
 ;
 
-},{"../actions/bands":615}],630:[function(require,module,exports){
+},{"../actions/bands":615}],632:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46368,7 +46422,7 @@ exports.default = function () {
 
 var _header = require("../actions/header");
 
-},{"../actions/header":616}],631:[function(require,module,exports){
+},{"../actions/header":616}],633:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46399,7 +46453,7 @@ var _home = require("../actions/home");
 
 ;
 
-},{"../actions/home":617}],632:[function(require,module,exports){
+},{"../actions/home":617}],634:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46431,7 +46485,7 @@ exports.default = {
   bands: _bands2.default
 };
 
-},{"./bands":629,"./header":630,"./home":631,"./myBand":633}],633:[function(require,module,exports){
+},{"./bands":631,"./header":632,"./home":633,"./myBand":635}],635:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46458,7 +46512,7 @@ var _myBand = require("../actions/myBand");
 
 ;
 
-},{"../actions/myBand":618}],634:[function(require,module,exports){
+},{"../actions/myBand":618}],636:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46489,9 +46543,15 @@ var _Bands = require("./components/Bands");
 
 var _Bands2 = _interopRequireDefault(_Bands);
 
+var _Shows = require("./components/Shows");
+
+var _Shows2 = _interopRequireDefault(_Shows);
+
 var _home = require("./actions/home");
 
 var _bands = require("./actions/bands");
+
+var _shows = require("./actions/shows");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46516,6 +46576,9 @@ var AppRoutes = function AppRoutes(_ref) {
     _react2.default.createElement(_reactRouter.Route, { path: "/bands", components: { content: _Bands2.default }, onEnter: function onEnter() {
         return dispatch(_bands.loadBandsAction);
       } }),
+    _react2.default.createElement(_reactRouter.Route, { path: "/shows", components: { content: _Shows2.default }, onEnter: function onEnter() {
+        return dispatch(_shows.loadShowsAction);
+      } }),
     _react2.default.createElement(_reactRouter.IndexRoute, { components: { content: _Home2.default }, onEnter: function onEnter() {
         return dispatch(_home.loadEventsAction);
       } }),
@@ -46525,7 +46588,7 @@ var AppRoutes = function AppRoutes(_ref) {
 
 exports.default = AppRoutes;
 
-},{"./actions/bands":615,"./actions/home":617,"./components/App":619,"./components/Bands":620,"./components/Home":621,"./components/MyBand":622,"react":257,"react-redux":190,"react-router":226}],635:[function(require,module,exports){
+},{"./actions/bands":615,"./actions/home":617,"./actions/shows":619,"./components/App":620,"./components/Bands":621,"./components/Home":622,"./components/MyBand":623,"./components/Shows":624,"react":257,"react-redux":190,"react-router":226}],637:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46557,7 +46620,7 @@ var configureStore = exports.configureStore = function configureStore(initialSta
   return store;
 };
 
-},{"./epics":627,"./reducers":632,"react-router-redux":196,"redux":268}]},{},[628])
+},{"./epics":629,"./reducers":634,"react-router-redux":196,"redux":268}]},{},[630])
 
 
 //# sourceMappingURL=build.js.map
