@@ -49,7 +49,6 @@ const Shows = ({shows, loading}) => {
       </main>
     );
   }
-  console.log(chunk(2, shows));
   return (
     <main className="show-list">
       <section>
