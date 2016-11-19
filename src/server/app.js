@@ -102,7 +102,7 @@ app.use(function (req, res, next) {
         </Provider>
       )
       res.send('<!doctype html>\n' + renderToString(<HTML content={content} store={store}/>));
-    }else{
+    } else {
       next();
     }
   });
