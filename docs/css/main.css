@@ -198,6 +198,292 @@ header {
     height: 380px;
     width: 260px;
     margin-right: 0; } }
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
+.margin-auto {
+  margin: 0 auto; }
+
+.band-list {
+  width: 100%;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 960px;
+  margin: 0 auto;
+  display: block;
+  padding-top: 30px; }
+
+.band-row {
+  font-size: 0; }
+  .band-row:not(:first-of-type) {
+    margin-top: 90px; }
+
+.band-unit {
+  width: 25%;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px; }
+  .band-unit:first-of-type {
+    width: 25%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 20px; }
+  .band-unit:last-of-type {
+    width: 25%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 0; }
+
+.band-unit__photo {
+  height: 190px;
+  width: 100%;
+  object-fit: cover; }
+
+.band-unit__name {
+  font-weight: 600;
+  font-size: 1em;
+  margin-top: 20px; }
+
+.band-unit__description {
+  font-weight: 300;
+  font-size: 0.875em;
+  margin-top: 20px;
+  line-height: 1.5; }
+
+@media only screen and (max-width: 900px) {
+  .band-list section {
+    padding: 0 18px; }
+
+  .band-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .band-row:not(:first-of-type) {
+      margin-top: 0; }
+
+  .band-unit {
+    width: 50%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+    width: 48%;
+    margin-top: 20px; }
+    .band-unit:first-of-type {
+      width: 50%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      width: 48%; }
+    .band-unit:last-of-type {
+      width: 50%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      width: 48%; } }
+@media only screen and (max-width: 550px) {
+  .band-list section {
+    padding: 0 18px; }
+
+  .band-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .band-row:not(:first-of-type) {
+      margin-top: 0; }
+
+  .band-unit {
+    width: 100%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    margin-top: 20px; }
+    .band-unit:first-of-type {
+      width: 100%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%; }
+    .band-unit:last-of-type {
+      width: 100%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%; } }
+.show-list {
+  width: 100%;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 960px;
+  margin: 0 auto;
+  display: block;
+  padding-top: 30px; }
+
+.show-row {
+  font-size: 0; }
+  .show-row:not(:first-of-type) {
+    margin-top: 90px; }
+
+.band-unit {
+  width: 25%;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px; }
+  .band-unit:first-of-type {
+    width: 25%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 20px; }
+  .band-unit:last-of-type {
+    width: 25%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 0; }
+
+.band-unit__photo {
+  height: 240px;
+  width: 100%;
+  object-fit: cover; }
+
+.band-unit__name {
+  font-weight: 600;
+  font-size: 1em;
+  margin-top: 20px; }
+
+.band-unit__description {
+  font-weight: 300;
+  font-size: 0.875em;
+  margin-top: 20px;
+  line-height: 1.5; }
+
+@media only screen and (max-width: 900px) {
+  .band-list section {
+    padding: 0 18px; }
+
+  .band-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .band-row:not(:first-of-type) {
+      margin-top: 0; }
+
+  .band-unit {
+    width: 50%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+    width: 48%;
+    margin-top: 20px; }
+    .band-unit:first-of-type {
+      width: 50%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      width: 48%; }
+    .band-unit:last-of-type {
+      width: 50%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      width: 48%; } }
+@media only screen and (max-width: 550px) {
+  .band-list section {
+    padding: 0 18px; }
+
+  .band-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .band-row:not(:first-of-type) {
+      margin-top: 0; }
+
+  .band-unit {
+    width: 100%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    margin-top: 20px; }
+    .band-unit:first-of-type {
+      width: 100%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%; }
+    .band-unit:last-of-type {
+      width: 100%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%; } }
 form h1 {
   border-bottom: 1px solid #5A5A5A;
   margin-bottom: 30px; }
