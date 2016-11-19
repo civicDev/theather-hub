@@ -10,7 +10,7 @@ const db = new (sqlite3.verbose()).Database('db', sqlite3.OPEN_READWRITE | sqlit
             location VARCHAR(255),
             city VARCHAR(255),
             band VARCHAR(255),
-            banner VARCHAR(255),
+            image VARCHAR(255),
             cast VARCHAR(510),
             duration DECIMAL(5,0),
             tickets VARCHAR(255),

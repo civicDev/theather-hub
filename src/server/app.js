@@ -53,6 +53,8 @@ app.get("/api/events", function(req, res){
   });
 });
 
+
+
 app.get('/api/seed', function(req, res) {
   db.seed().then(function() {
     res.send('OK');
