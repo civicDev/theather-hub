@@ -45508,7 +45508,7 @@ var _LoadingSection2 = _interopRequireDefault(_LoadingSection);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Event = function Event(_ref) {
-  var banner = _ref.banner,
+  var image = _ref.image,
       name = _ref.name,
       cast = _ref.cast,
       duration = _ref.duration,
@@ -45519,7 +45519,7 @@ var Event = function Event(_ref) {
   return _react2.default.createElement(
     "div",
     { className: "event" },
-    _react2.default.createElement("img", { src: banner }),
+    _react2.default.createElement("img", { src: image }),
     _react2.default.createElement(
       "div",
       { className: "info" },
@@ -45959,7 +45959,7 @@ var Profile = function (_React$Component) {
           members = _props$bandProfile.members,
           name = _props$bandProfile.name,
           description = _props$bandProfile.description,
-          pictureLink = _props$bandProfile.pictureLink,
+          image = _props$bandProfile.image,
           foundingYear = _props$bandProfile.foundingYear,
           cityOfResidence = _props$bandProfile.cityOfResidence;
 
@@ -45998,7 +45998,7 @@ var Profile = function (_React$Component) {
               { htmlFor: "band-picture" },
               "Poz\u0103 profil"
             ),
-            pictureLink ? _react2.default.createElement("img", { src: pictureLink }) : null,
+            image ? _react2.default.createElement("img", { src: image }) : null,
             _react2.default.createElement("input", { name: "band-picture", type: "button", className: "upload", value: "Upload" }),
             _react2.default.createElement(
               "label",

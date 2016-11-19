@@ -5,9 +5,9 @@ import {connect} from "react-redux";
 import Slideshow from "./Slideshow";
 import LoadingSection from "./LoadingSection";
 
-const Event = ({banner, name, cast, duration, contact, price, time, place}) => (
+const Event = ({image, name, cast, duration, contact, price, time, place}) => (
   <div className="event">
-      <img src={banner}/>
+      <img src={image}/>
       <div className="info">
           <div className="name">{name}</div>
           <div className="cast">{cast}</div>

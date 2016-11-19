@@ -86,7 +86,7 @@ class Profile extends React.Component{
     dispatch(saveProfileAction(payload));
   }
   render(){
-    const {members, name, description, pictureLink, foundingYear, cityOfResidence} = this.props.bandProfile;
+    const {members, name, description, image, foundingYear, cityOfResidence} = this.props.bandProfile;
     return (
       <main className="band-profile">
         <form>
@@ -100,7 +100,7 @@ class Profile extends React.Component{
                 <input name="band-founded" ref={(input)=>this.foundingYearInput = input} value={foundingYear} type="text"/>
 
                 <label htmlFor="band-picture">Poză profil</label>
-                {pictureLink ? <img src={pictureLink} /> : null}
+                {image ? <img src={image} /> : null}
                 <input name="band-picture" type="button" className="upload" value="Upload"/>
 
                 <label htmlFor="band-description">Descriere</label>
