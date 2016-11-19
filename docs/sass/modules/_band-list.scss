@@ -1,0 +1,112 @@
+.band-list {
+    @include col(1, 1, 0);
+    max-width: $content-width;
+    margin: 0 auto;
+    display: block;
+    padding-top: $big-margin;
+}
+
+.band-row {
+    @include row();
+    
+    &:not(:first-of-type) {
+        margin-top: $big-margin * 3;
+    }
+}
+
+.band-unit {
+    @include col(1,4, $small-margin);
+
+    &:first-of-type {
+        @include col(1,4, $small-margin, $first: true);
+    }
+
+    &:last-of-type {
+        @include col(1,4, $small-margin, $last: true);
+    }
+}
+
+.band-unit__photo {
+    height: 190px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.band-unit__name {
+    @include font-large-bold();
+    margin-top: $small-margin;
+}
+.band-unit__description {
+    @include font-main();
+    margin-top: $small-margin;
+    line-height: 1.5;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    .band-list section {
+        padding: 0 $mobile-page-margin;
+    }
+
+    .band-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        &:not(:first-of-type) {
+            margin-top: 0;
+        }
+    }
+    
+    .band-unit {
+        @include col(1,2, 0);
+        width: 48%;
+        margin-top: $small-margin;
+
+        &:first-of-type {
+            @include col(1,2, 0, $first: false);
+            width: 48%;
+        }
+
+        &:last-of-type {
+            @include col(1,2, 0, $last: false);
+            width: 48%;
+        }
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .band-list section {
+        padding: 0 $mobile-page-margin;
+    }
+
+    .band-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        &:not(:first-of-type) {
+            margin-top: 0;
+        }
+    }
+    
+    .band-unit {
+        @include col(1,1, 0);
+        width: 100%;
+        margin-top: $small-margin;
+
+        &:first-of-type {
+            @include col(1,1, 0, $first: false);
+            width: 100%;
+        }
+
+        &:last-of-type {
+            @include col(1,1, 0, $last: false);
+            width: 100%;
+        }
+    }
+}
+
