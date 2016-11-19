@@ -2,16 +2,19 @@ import express from "express";
 import serialize from "serialize-javascript";
 import session from "express-session";
 
-import React from "react"
-import { renderToString } from "react-dom/server"
+
+import React from "react";
+import { renderToString } from "react-dom/server";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import { createMemoryHistory, match, RouterContext } from "react-router"
+import { createMemoryHistory, match, RouterContext } from "react-router";
 import { syncHistoryWithStore } from "react-router-redux";
 
 import { reducer } from "../client/store";
 
 import AppRoutes from '../client/routes';
+
+import DB from './db';
 
 const HTML = ({ content, store }) => (
   <html>
@@ -30,6 +33,8 @@ const HTML = ({ content, store }) => (
 );
 
 const app = express();
+const db = new DB();
+
 
 app.use(express.static("public"));
 app.use(session({
@@ -38,40 +43,20 @@ app.use(session({
 }))
 
 app.get("/api/events", function(req, res){
-  res.json([{
-    id : 0,
-    banner : "img/cum se duce.jpg",
-    name : "Cum Se Duce Totul Dracu'",
-    cast : "Ioana Chelmuș, Florin Frățilă",
-    duration : "1",
-    contact : "0735 026 762",
-    price : "18",
-    time : "20:00",
-    place : "În Culise, București",
-    date : "Sâmbătă, 12 Noiembrie"
-  }, {
-    id : 1,
-    banner : "img/valar improvis.jpg",
-    name : "Valar Improvis'",
-    cast : "Delia Alexandra Riciu, Adriana Bordeanu, Vlad Pasecu, George Dumitru, Andrei Negoita, Bogdan Untilă",
-    duration : "1,5",
-    contact : "0730 744 682",
-    price : "25",
-    time : "22:00",
-    place : "Recul, București",
-    date : "Sâmbătă, 12 Noiembrie"
-  }, {
-    id : 2,
-    banner : "img/amanta de la pranz.jpg",
-    name : "Amanta de la prânz",
-    cast : "George Dumitru, Andrei Negoita, Bogdan Untilă",
-    duration : "1,5",
-    contact : "0730 744 682",
-    price : "20",
-    time : "17:00",
-    place : "Music Club, București",
-    date : "Duminică, 13 Noiembrie"
-  }]);
+    db.all('SELECT * FROM events').then(function (result) {
+      for(let row of result) {
+        const date_split = row.datetime.split(' ');
+        row.date = date_split[0];
+        row.time = date_split[1];
+      }
+      res.json(result);
+  });
+});
+
+app.get('/api/seed', function(req, res) {
+  db.seed().then(function() {
+    res.send('OK');
+  });
 });
 
 app.get("/api/caca", function(req, res){
