@@ -84,7 +84,7 @@ app.use(function (req, res, next) {
   const memoryHistory = createMemoryHistory(req.url)
   const store = createStore(reducer, {
     myBand : {
-      isLoggedIn : false,
+      isLoggedIn : true,
       user : session.user
     }
   });
