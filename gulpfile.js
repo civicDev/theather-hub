@@ -75,4 +75,4 @@ gulp.task("dev-server", function(){
   });
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['dev-server']);

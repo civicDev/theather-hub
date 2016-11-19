@@ -13,9 +13,16 @@ const loadEventsEpic = (actions) => {
           .map((events) => loadedEventsAction(events) )
 };
 
+
+function makeFormData(payload){
+  const fd = new FormData();
+  fd.append('image', payload.image);
+  return fd;
+}
+
 const saveProfileEpic = (actions) => {
   return actions.ofType(SAVE_PROFILE_ACTION)
-          .switchMap((action)=> ajax.post("/api/save-band-info", action.payload))
+          .switchMap((action)=> ajax.post("/api/save-band-info", makeFormData(action.payload)))
           .map((profile) => savedProfileAction(profile));
 }
 

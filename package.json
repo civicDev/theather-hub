@@ -37,7 +37,9 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "connect-busboy": "0.0.2",
     "express": "^4.14.0",
+    "express-fileupload": "0.0.5",
     "express-session": "^1.14.2",
     "lodash": "^4.17.2",
     "react": "^15.4.0",

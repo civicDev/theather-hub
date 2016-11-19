@@ -2,7 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import serialize from "serialize-javascript";
 import session from "express-session";
-
+import fileUpload from "express-fileupload";
+import {writeFile} from "fs";
 
 import React from "react";
 import { renderToString } from "react-dom/server";
@@ -16,6 +17,9 @@ import { reducer } from "../client/store";
 import AppRoutes from '../client/routes';
 
 import DB from './db';
+
+console.log("Hello world");
+
 
 const HTML = ({ content, store }) => (
   <html>
@@ -36,15 +40,27 @@ const HTML = ({ content, store }) => (
 const app = express();
 const db = new DB();
 
-
 app.use(express.static("public"));
 app.use("/uploaded_images", express.static("uploaded_images"));
+app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(session({
   secret: 'keyboard cat',
   saveUninitialized: true
 }))
+
+app.post("/api/save-band-info", function(req, res){
+  console.log(req.files);
+
+  req.files.image.mv("uploaded_images/test-picture.jpg",function(err){
+    if(err){
+      return res.send("caca");
+    }
+    res.send("OK!");
+  });
+
+});
 
 app.get("/api/events", function(req, res){
     db.all('SELECT * FROM events e LEFT JOIN shows s ON e.show_id = s.id ORDER BY datetime ASC').then(function (result) {
@@ -87,7 +103,7 @@ app.post('/api/bands', function(req, res) {
     INSERT INTO bands (name, type, founded, city, link, description, email, telephone, website)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `, data.name, data.type, data.founded, data.city, data.link, data.description, data.email, data.telephone, data.website).then(function() {
-    res.json(data);  
+    res.json(data);
   });
 });
 
