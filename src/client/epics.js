@@ -12,11 +12,8 @@ const loadEventsEpic = (actions) => {
 };
 
 const saveProfileEpic = (actions) => {
-  console.log("save",actions);
-  console.log(SAVE_PROFILE_ACTION);
   return actions.ofType(SAVE_PROFILE_ACTION)
-          .map((action)=> { console.log(action); return action;})
-          .switchMap((action)=> { console.log(ajax); return ajax.post("/api/save-band-info", action.payload); })
+          .switchMap((action)=> ajax.post("/api/save-band-info", action.payload))
           .map((profile) => savedProfileAction(profile));
 }
 
