@@ -84,7 +84,7 @@ header {
     background-color: #5A5A5A;
     height: 4px;
     margin-top: 7px; }
-  header .slideshow {
+  .slideshow {
     width: 100%;
     height: 180px;
     background-image: url("../img/slide.png");
@@ -92,15 +92,15 @@ header {
     background-position-y: -85px;
     opacity: 0.88;
     position: relative; }
-  header .slideinfo {
+  .slideinfo {
     position: absolute;
     right: 48px;
     bottom: 20px;
     color: white;
     text-align: right; }
-    header .slideinfo .title {
+    .slideinfo .title {
       font-size: 0.875em; }
-    header .slideinfo .location, header .slideinfo .date {
+    .slideinfo .location, .slideinfo .date {
       font-size: 0.75em;
       font-weight: 300; }
 
