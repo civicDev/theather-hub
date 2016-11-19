@@ -33,10 +33,10 @@ const Show = ({show}) => {
 };
 
 
-const ShowRow = (shows) => {
+const ShowRow = ({shows}) => {
   return (
     <div className="show-row">
-      {shows.map((show)=> <Show key={makeId(shows)} show={show} />)}
+      {shows.map((show)=> <Show key={show.id} show={show} />)}
     </div>
   );
 };
@@ -64,4 +64,4 @@ function mapStateToProps(state){
   return state.shows;
 }
 
-export default connect()(Shows);
+export default connect(mapStateToProps)(Shows);
