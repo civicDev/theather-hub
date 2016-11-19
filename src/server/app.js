@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from "body-parser";
 import serialize from "serialize-javascript";
 import session from "express-session";
 
@@ -38,6 +39,8 @@ const db = new DB();
 
 app.use(express.static("public"));
 app.use("/uploaded_images", express.static("uploaded_images"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 app.use(session({
   secret: 'keyboard cat',
   saveUninitialized: true
@@ -66,16 +69,32 @@ app.get("/api/bands", function(req, res) {
   });
 });
 
+app.post('/api/bands', function(req, res) {
+  console.log(req.body);
+  const data = {
+    name: 'Test Band',
+    type: 1,
+    founded: 2014,
+    city: 'Timisoara',
+    link: '',
+    description: 'The best band in the world',
+    email: 'band@test.com',
+    telephone: '123456',
+    website: ''
+  }
+
+  db.run(`
+    INSERT INTO bands (name, type, founded, city, link, description, email, telephone, website)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `, data.name, data.type, data.founded, data.city, data.link, data.description, data.email, data.telephone, data.website).then(function() {
+    res.json(data);  
+  });
+});
 
 app.get('/api/seed', function(req, res) {
   db.seed().then(function() {
     res.send('OK');
   });
-});
-
-app.get("/api/caca", function(req, res){
-  res.send(req.session);
-
 });
 
 app.use(function (req, res, next) {
