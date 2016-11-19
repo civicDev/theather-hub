@@ -74,6 +74,7 @@ class Profile extends React.Component{
     this.descriptionInput = null;
     this.foundingYearInput = null;
     this.cityOfResidenceInput = null;
+    this.pictureInput = null;
   }
   saveProfile(){
     const {dispatch} = this.props;
@@ -81,7 +82,8 @@ class Profile extends React.Component{
       name : this.nameInput.value,
       description : this.descriptionInput.value,
       foundingYear : this.foundingYearInput.value,
-      cityOfResidence : this.cityOfResidenceInput.value
+      cityOfResidence : this.cityOfResidenceInput.value,
+      image : this.pictureInput.files[0]
     };
     dispatch(saveProfileAction(payload));
   }
@@ -101,7 +103,7 @@ class Profile extends React.Component{
 
                 <label htmlFor="band-picture">Poză profil</label>
                 {image ? <img src={image} /> : null}
-                <input name="band-picture" type="button" className="upload" value="Upload"/>
+                <input name="band-picture" ref={(input) => this.pictureInput = input} type="file" />
 
                 <label htmlFor="band-description">Descriere</label>
                 <textarea name="band-description" ref={(input)=>this.descriptionInput = input} defaultValue={description}></textarea>
