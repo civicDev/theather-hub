@@ -25,7 +25,7 @@ const Header = ({dispatch, menuVisisble, currentLink}) => {
                   <Link to="/bands">Trupe</Link>
                 </li>
                 <li className={selected(currentLink, "/book-a-show")}>
-                  <Link to="/book-a-show">Book a show</Link>
+                  <Link to="/book-a-show">Cheama o trupa</Link>
                 </li>
                 <li className={selected(currentLink, "/help-the-bands")}>
                   <Link to="/help-the-bands">Susținere trupe</Link>

@@ -5,19 +5,19 @@ import {connect} from "react-redux";
 import Slideshow from "./Slideshow";
 import LoadingSection from "./LoadingSection";
 
-const Event = ({image, name, cast, duration, contact, price, time, place}) => (
+const Event = ({image, name, cast, duration, tickets, price, time, location, city}) => (
   <div className="event">
       <img src={image}/>
       <div className="info">
           <div className="name">{name}</div>
           <div className="cast">{cast}</div>
           <div className="info-item">Durata: {duration} h</div>
-          <div className="info-item">Rezervări: {contact}</div>
+          <div className="info-item">Rezervări: {tickets}</div>
           <div className="info-item">Preț bilet: {price} lei</div>
       </div>
       <div className="additional-details">
           <div className="time">ora {time}</div>
-          <div className="place">{place}</div>
+          <div className="place">{city}, {location}</div>
       </div>
   </div>
 );
@@ -37,7 +37,7 @@ const EventDay = ({date, events})=>(
 const Aside = () => (
   <aside>
       <section>
-          <h1>Book a show</h1>
+          <h1>Cheama o Trupa</h1>
           <p>Dacă ești în căutarea unei trupe de teatru care să susțină un spectacol in locația ta, vizitează secțiunea <Link to="/book-a-show">Book a show</Link>.</p>
       </section>
 
