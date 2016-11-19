@@ -37,6 +37,7 @@ const db = new DB();
 
 
 app.use(express.static("public"));
+app.use("/uploaded_images", express.static("uploaded_images"));
 app.use(session({
   secret: 'keyboard cat',
   saveUninitialized: true
