@@ -43,7 +43,7 @@ app.use(session({
 }))
 
 app.get("/api/events", function(req, res){
-    db.all('SELECT * FROM events ORDER BY datetime DESC').then(function (result) {
+    db.all('SELECT * FROM events ORDER BY datetime ASC').then(function (result) {
       for(let row of result) {
         const date_split = row.datetime.split(' ');
         row.date = date_split[0];
@@ -52,6 +52,8 @@ app.get("/api/events", function(req, res){
       res.json(result);
   });
 });
+
+
 
 app.get('/api/seed', function(req, res) {
   db.seed().then(function() {
