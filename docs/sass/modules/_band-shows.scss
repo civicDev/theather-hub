@@ -1,0 +1,129 @@
+.show-list{
+    @include col(1, 1, 0);
+    max-width: $content-width;
+    margin: 0 auto;
+    display: block;
+    padding-top: $big-margin;
+}
+
+.show-row {
+    @include row();
+    margin-top: $big-margin;
+    
+    &:not(:first-of-type) {
+        margin-top: $big-margin * 3;
+    }
+}
+
+.show-unit {
+    @include col(1,2, $small-margin);
+
+    &:first-of-type {
+        @include col(1,2, $small-margin, $first: true);
+    }
+
+    &:last-of-type {
+        @include col(1,2, $small-margin, $last: true);
+    }
+}
+
+.show-unit__photo {
+    height: 290px;
+    width: 50%;
+    margin: 0 auto;
+    max-width: 200px;
+    object-fit: cover;
+}
+
+.show-unit__name {
+    @include font-large-bold();
+    margin-top: $small-margin;
+}
+.show-unit__details {
+    @include font-main();
+    line-height: 1.5;
+    padding-left: $small-margin;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    p {
+        &:first-of-type {
+            margin: 0;
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 960px) {
+    .show-list section {
+        padding: 0 $mobile-page-margin;
+    }
+
+    .show-row {
+        @include row();
+        margin-top: $big-margin;
+        
+        &:not(:first-of-type) {
+            margin-top: $big-margin;
+        }
+    }
+    
+    .show-unit {
+        .display-flex {
+            flex-direction: column;
+        }
+    }
+
+    .show-unit__photo {
+        height: 380px;
+        width: 285px;
+        margin-left: 0;
+        max-width: initial;
+        object-fit: cover;
+    }
+
+    .show-unit__details {
+        width: 285px;
+        margin-left: 0;
+        margin-top: $small-margin;
+        padding-left: 0;
+    }
+}
+
+@media only screen and (max-width: 650px) {    
+    .show-row {
+        @include row();
+        margin-top: $big-margin;
+        
+        &:not(:first-of-type) {
+            margin-top: 0;
+        }
+    }
+
+    .show-unit {
+        @include col(1,1, 0);
+        width: 100%;
+        margin-top: $big-margin * 2;
+
+        &:first-of-type {
+            @include col(1,1, 0, $first: false);
+            width: 100%;
+            margin-top: $big-margin * 2;
+        }
+
+        &:last-of-type {
+            @include col(1,1, 0, $last: false);
+            width: 100%;
+            margin-top: $big-margin * 2;
+        }
+    }
+
+    .show-unit__photo, .show-unit__details {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
