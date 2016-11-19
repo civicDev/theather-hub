@@ -45378,7 +45378,7 @@ var App = function App(_ref) {
 
 exports.default = App;
 
-},{"./header":628,"react":257}],621:[function(require,module,exports){
+},{"./header":629,"react":257}],621:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45392,6 +45392,12 @@ var _react2 = _interopRequireDefault(_react);
 var _reactRedux = require("react-redux");
 
 var _fp = require("lodash/fp");
+
+var _LoadingSection = require("./LoadingSection");
+
+var _LoadingSection2 = _interopRequireDefault(_LoadingSection);
+
+var _utils = require("../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45435,15 +45441,17 @@ var BandRow = function BandRow(_ref2) {
   );
 };
 
-function makeId(bandGroup) {
-  return bandGroup.reduce(function (result, band) {
-    return result + band.id;
-  }, "");
-}
-
 var Bands = function Bands(_ref3) {
-  var bands = _ref3.bands;
+  var bands = _ref3.bands,
+      loading = _ref3.loading;
 
+  if (loading) {
+    return _react2.default.createElement(
+      "main",
+      { className: "band-list" },
+      _react2.default.createElement(_LoadingSection2.default, null)
+    );
+  }
   return _react2.default.createElement(
     "main",
     { className: "band-list" },
@@ -45455,8 +45463,8 @@ var Bands = function Bands(_ref3) {
         null,
         "Vezi toate trupele"
       ),
-      (0, _fp.chunk)(4, bands).map(function (bandGroup, index) {
-        return _react2.default.createElement(BandRow, { key: makeId(bandGroup), bands: bandGroup });
+      (0, _fp.chunk)(4, bands).map(function (bandGroup) {
+        return _react2.default.createElement(BandRow, { key: (0, _utils.makeId)(bandGroup), bands: bandGroup });
       })
     )
   );
@@ -45468,7 +45476,7 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Bands);
 
-},{"lodash/fp":51,"react":257,"react-redux":190}],622:[function(require,module,exports){
+},{"../utils":639,"./LoadingSection":623,"lodash/fp":51,"react":257,"react-redux":190}],622:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45492,6 +45500,10 @@ var _reactRedux = require("react-redux");
 var _Slideshow = require("./Slideshow");
 
 var _Slideshow2 = _interopRequireDefault(_Slideshow);
+
+var _LoadingSection = require("./LoadingSection");
+
+var _LoadingSection2 = _interopRequireDefault(_LoadingSection);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45688,9 +45700,11 @@ var Home = function Home(_ref6) {
       events = _ref6$events === undefined ? [] : _ref6$events;
 
   var body = !loading ? _react2.default.createElement(Events, { events: events }) : _react2.default.createElement(
-    "div",
+    "main",
     { className: "home" },
-    "Loading"
+    " ",
+    _react2.default.createElement(_LoadingSection2.default, null),
+    " "
   );
 
   return _react2.default.createElement(
@@ -45712,7 +45726,30 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Home);
 
-},{"./Slideshow":625,"lodash/fp":51,"react":257,"react-redux":190,"react-router":226}],623:[function(require,module,exports){
+},{"./LoadingSection":623,"./Slideshow":626,"lodash/fp":51,"react":257,"react-redux":190,"react-router":226}],623:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var LoadingSection = function LoadingSection() {
+  return _react2.default.createElement(
+    "div",
+    null,
+    "Loading..."
+  );
+};
+
+exports.default = LoadingSection;
+
+},{"react":257}],624:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45728,6 +45765,10 @@ var _react2 = _interopRequireDefault(_react);
 var _reactRedux = require("react-redux");
 
 var _myBand = require("../actions/myBand");
+
+var _LoadingSection = require("./LoadingSection");
+
+var _LoadingSection2 = _interopRequireDefault(_LoadingSection);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46019,7 +46060,7 @@ var MyBand = function MyBand(_ref3) {
     return _react2.default.createElement(
       "main",
       { className: "band-profile" },
-      "Loading..."
+      _react2.default.createElement(_LoadingSection2.default, null)
     );
   }
 
@@ -46032,7 +46073,7 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(MyBand);
 
-},{"../actions/myBand":618,"react":257,"react-redux":190}],624:[function(require,module,exports){
+},{"../actions/myBand":618,"./LoadingSection":623,"react":257,"react-redux":190}],625:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46045,19 +46086,138 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require("react-redux");
 
+var _fp = require("lodash/fp");
+
+var _utils = require("../utils");
+
+var _LoadingSection = require("./LoadingSection");
+
+var _LoadingSection2 = _interopRequireDefault(_LoadingSection);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Shows = function Shows() {
+var Show = function Show(_ref) {
+  var show = _ref.show;
+
   return _react2.default.createElement(
     "div",
-    null,
-    "Show"
+    { className: "show-unit" },
+    _react2.default.createElement(
+      "div",
+      { className: "display-flex" },
+      _react2.default.createElement("img", { className: "show-unit__photo ", src: show.image }),
+      _react2.default.createElement(
+        "div",
+        { className: "show-unit__details" },
+        _react2.default.createElement(
+          "div",
+          null,
+          _react2.default.createElement(
+            "p",
+            null,
+            _react2.default.createElement(
+              "strong",
+              null,
+              "Scurta descriere:"
+            )
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            show.description
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          _react2.default.createElement(
+            "p",
+            null,
+            _react2.default.createElement(
+              "strong",
+              null,
+              "Durata:"
+            )
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            show.duration
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          _react2.default.createElement(
+            "p",
+            null,
+            _react2.default.createElement(
+              "strong",
+              null,
+              "Jucat de:"
+            )
+          ),
+          _react2.default.createElement(
+            "a",
+            { href: "#" },
+            _react2.default.createElement(
+              "p",
+              { className: "show-unit__name" },
+              show.bandName
+            )
+          )
+        )
+      )
+    )
   );
 };
 
+var ShowRow = function ShowRow(shows) {
+  return _react2.default.createElement(
+    "div",
+    { className: "show-row" },
+    shows.map(function (show) {
+      return _react2.default.createElement(Show, { key: (0, _utils.makeId)(shows), show: show });
+    })
+  );
+};
+
+var Shows = function Shows(_ref2) {
+  var shows = _ref2.shows,
+      loading = _ref2.loading;
+
+  if (loading) {
+    return _react2.default.createElement(
+      "main",
+      { className: "show-list" },
+      _react2.default.createElement(_LoadingSection2.default, null)
+    );
+  }
+  return _react2.default.createElement(
+    "main",
+    { className: "show-list" },
+    _react2.default.createElement(
+      "section",
+      null,
+      _react2.default.createElement(
+        "h1",
+        null,
+        "Vezi toate spectacolele"
+      ),
+      (0, _fp.chunk)(2, shows).map(function (shows) {
+        return _react2.default.createElement(ShowRow, { key: (0, _utils.makeId)(shows), shows: shows });
+      })
+    )
+  );
+};
+
+function mapStateToProps(state) {
+  return state.shows;
+}
+
 exports.default = (0, _reactRedux.connect)()(Shows);
 
-},{"react":257,"react-redux":190}],625:[function(require,module,exports){
+},{"../utils":639,"./LoadingSection":623,"lodash/fp":51,"react":257,"react-redux":190}],626:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46103,7 +46263,7 @@ var Slideshow = function Slideshow() {
 
 exports.default = Slideshow;
 
-},{"react":257}],626:[function(require,module,exports){
+},{"react":257}],627:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46226,7 +46386,7 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
-},{"../../actions/header":616,"./Logo":627,"react":257,"react-redux":190,"react-router":226}],627:[function(require,module,exports){
+},{"../../actions/header":616,"./Logo":628,"react":257,"react-redux":190,"react-router":226}],628:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46251,7 +46411,7 @@ exports.default = function () {
   );
 };
 
-},{"react":257}],628:[function(require,module,exports){
+},{"react":257}],629:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46266,7 +46426,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _Header2.default;
 
-},{"./Header":626}],629:[function(require,module,exports){
+},{"./Header":627}],630:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46330,7 +46490,7 @@ var configEpicMiddleware = exports.configEpicMiddleware = function configEpicMid
   return (0, _reduxObservable.createEpicMiddleware)(rootEpic);
 };
 
-},{"./actions/bands":615,"./actions/home":617,"./actions/myBand":618,"./actions/shows":619,"redux-observable":262,"rxjs":278,"rxjs/observable/dom/ajax":442}],630:[function(require,module,exports){
+},{"./actions/bands":615,"./actions/home":617,"./actions/myBand":618,"./actions/shows":619,"redux-observable":262,"rxjs":278,"rxjs/observable/dom/ajax":442}],631:[function(require,module,exports){
 "use strict";
 
 var _react = require("react");
@@ -46367,7 +46527,7 @@ _reactDom2.default.render(_react2.default.createElement(
   _react2.default.createElement(_reactRouter.Router, { history: history, routes: routes })
 ), document.getElementById("root"));
 
-},{"./routes":636,"./store":637,"react":257,"react-dom":61,"react-redux":190,"react-router":226,"react-router-redux":196}],631:[function(require,module,exports){
+},{"./routes":637,"./store":638,"react":257,"react-dom":61,"react-redux":190,"react-router":226,"react-router-redux":196}],632:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46398,7 +46558,7 @@ var _bands = require("../actions/bands");
 
 ;
 
-},{"../actions/bands":615}],632:[function(require,module,exports){
+},{"../actions/bands":615}],633:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46422,7 +46582,7 @@ exports.default = function () {
 
 var _header = require("../actions/header");
 
-},{"../actions/header":616}],633:[function(require,module,exports){
+},{"../actions/header":616}],634:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46453,7 +46613,7 @@ var _home = require("../actions/home");
 
 ;
 
-},{"../actions/home":617}],634:[function(require,module,exports){
+},{"../actions/home":617}],635:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46485,7 +46645,7 @@ exports.default = {
   bands: _bands2.default
 };
 
-},{"./bands":631,"./header":632,"./home":633,"./myBand":635}],635:[function(require,module,exports){
+},{"./bands":632,"./header":633,"./home":634,"./myBand":636}],636:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46512,7 +46672,7 @@ var _myBand = require("../actions/myBand");
 
 ;
 
-},{"../actions/myBand":618}],636:[function(require,module,exports){
+},{"../actions/myBand":618}],637:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46588,7 +46748,7 @@ var AppRoutes = function AppRoutes(_ref) {
 
 exports.default = AppRoutes;
 
-},{"./actions/bands":615,"./actions/home":617,"./actions/shows":619,"./components/App":620,"./components/Bands":621,"./components/Home":622,"./components/MyBand":623,"./components/Shows":624,"react":257,"react-redux":190,"react-router":226}],637:[function(require,module,exports){
+},{"./actions/bands":615,"./actions/home":617,"./actions/shows":619,"./components/App":620,"./components/Bands":621,"./components/Home":622,"./components/MyBand":624,"./components/Shows":625,"react":257,"react-redux":190,"react-router":226}],638:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46620,7 +46780,20 @@ var configureStore = exports.configureStore = function configureStore(initialSta
   return store;
 };
 
-},{"./epics":629,"./reducers":634,"react-router-redux":196,"redux":268}]},{},[630])
+},{"./epics":630,"./reducers":635,"react-router-redux":196,"redux":268}],639:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.makeId = makeId;
+function makeId(items) {
+  return items.reduce(function (result, item) {
+    return result + item.id;
+  }, "");
+}
+
+},{}]},{},[631])
 
 
 //# sourceMappingURL=build.js.map

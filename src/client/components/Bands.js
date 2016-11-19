@@ -1,6 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import { chunk } from "lodash/fp";
+import LoadingSection from "./LoadingSection";
+import { makeId } from "../utils";
 
 const Band = ({band}) => {
   return (
@@ -26,20 +28,22 @@ const BandRow = ({bands})=>{
  );
 };
 
-function makeId(bandGroup){
-  return bandGroup.reduce((result, band)=> result + band.id, "");
-}
 
-const Bands = ({bands}) => {
+const Bands = ({bands, loading}) => {
+  if(loading){
+    return (
+      <main className="band-list">
+        <LoadingSection />
+      </main>
+    )
+  }
   return (
     <main className="band-list">
         <section>
             <h1>Vezi toate trupele</h1>
-            {chunk(4, bands).map((bandGroup, index) => <BandRow key={makeId(bandGroup)} bands={bandGroup} />)}
+            {chunk(4, bands).map((bandGroup)=> <BandRow key={makeId(bandGroup)} bands={bandGroup} />)}
         </section>
     </main>
-
-
   );
 };
 

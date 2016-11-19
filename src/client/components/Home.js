@@ -3,6 +3,7 @@ import {groupBy, keys, values, zip, reduce, map} from "lodash/fp";
 import {Link} from "react-router";
 import {connect} from "react-redux";
 import Slideshow from "./Slideshow";
+import LoadingSection from "./LoadingSection";
 
 const Event = ({banner, name, cast, duration, contact, price, time, place}) => (
   <div className="event">
@@ -79,7 +80,7 @@ const Events = ({events}) => (
 const Home = ({loading, events = []}) => {
   const body = !loading ?
     (<Events events={events} />) :
-    (<div className="home">Loading</div>)
+    (<main className="home"> <LoadingSection /> </main>)
 
   return (
     <div>

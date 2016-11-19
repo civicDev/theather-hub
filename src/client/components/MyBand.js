@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {saveProfileAction} from "../actions/myBand";
+import LoadingSection from "./LoadingSection";
 
 
 const Login = () => {
@@ -137,7 +138,11 @@ const MyBand = ({isLoggedIn, loading, bandInfo, dispatch}) => {
   }];
 
   if(loading){
-    return <main className="band-profile">Loading...</main>;
+    return (
+      <main className="band-profile">
+        <LoadingSection />
+      </main>
+  );
   }
 
   return <Profile dispatch={dispatch} bandProfile={{members : m}} />;
