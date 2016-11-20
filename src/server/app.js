@@ -15,10 +15,9 @@ import { syncHistoryWithStore } from "react-router-redux";
 import { reducer } from "../client/store";
 
 import AppRoutes from '../client/routes';
+import { loadedEventsAction, loadEventsAction } from "../client/actions/home";
 
 import DB from './db';
-
-console.log("Hello world");
 
 
 const HTML = ({ content, store }) => (
@@ -51,8 +50,6 @@ app.use(session({
 }))
 
 app.post("/api/save-band-info", function(req, res){
-  console.log(req.files);
-
   req.files.image.mv("uploaded_images/test-picture.jpg",function(err){
     if(err){
       return res.send("caca");
@@ -62,14 +59,20 @@ app.post("/api/save-band-info", function(req, res){
 
 });
 
+function getAllEvents(){
+  return db.all('SELECT * FROM events e LEFT JOIN shows s ON e.show_id = s.id ORDER BY datetime ASC').then(function(result){
+    for(let row of result) {
+      const date_split = row.datetime.split(' ');
+      row.date = date_split[0];
+      row.time = date_split[1];
+    }
+    return result;
+  });
+}
+
 app.get("/api/events", function(req, res){
-    db.all('SELECT * FROM events e LEFT JOIN shows s ON e.show_id = s.id ORDER BY datetime ASC').then(function (result) {
-      for(let row of result) {
-        const date_split = row.datetime.split(' ');
-        row.date = date_split[0];
-        row.time = date_split[1];
-      }
-      res.json(result);
+  getAllEvents().then(function (result) {
+    res.json(result);
   });
 });
 
@@ -113,6 +116,16 @@ app.get('/api/seed', function(req, res) {
   });
 });
 
+function fetchRouteData(route, store){
+  if(route === "/"){
+    return getAllEvents().then(function(events){
+      store.dispatch(loadEventsAction);
+      store.dispatch(loadedEventsAction(events));
+    });
+  }
+  return Promise.resolve();
+}
+
 app.use(function (req, res, next) {
   const {session} = req;
   const memoryHistory = createMemoryHistory(req.url)
@@ -125,18 +138,21 @@ app.use(function (req, res, next) {
 
   const history = syncHistoryWithStore(memoryHistory, store);
   const routes = AppRoutes({dispatch : store.dispatch});
+
   match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message)
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      const content = renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps}/>
-        </Provider>
-      )
-      res.send('<!doctype html>\n' + renderToString(<HTML content={content} store={store}/>));
+      fetchRouteData(req.url, store).then(function(){
+        const content = renderToString(
+          <Provider store={store}>
+            <RouterContext {...renderProps}/>
+          </Provider>
+        )
+        res.send('<!doctype html>\n' + renderToString(<HTML content={content} store={store}/>));
+      });
     } else {
       next();
     }

@@ -17,6 +17,7 @@ const loadEventsEpic = (actions) => {
 function makeFormData(payload){
   const fd = new FormData();
   fd.append('image', payload.image);
+  fd.append('name', payload.name);
   return fd;
 }
 

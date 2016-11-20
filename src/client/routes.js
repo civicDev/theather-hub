@@ -18,14 +18,25 @@ const NotFound = () => (
   </main>
 );
 
-const AppRoutes = ({dispatch}) => (
+
+function withInitialState(global, next){
+  return function(){
+    if(global && global.__initialState__){
+      delete global.__initialState__;
+      return;
+    }
+    return next();
+  };
+}
+
+const AppRoutes = ({dispatch, global}) => (
     <Route path="/" component={App}>
       <Route path="/my-band" components={{ content : MyBand }}/>
-      <Route path="/bands" components={{ content : Bands }} onEnter={ ()=> dispatch(loadBandsAction) }/>
-      <Route path="/shows" components={{ content : Shows }} onEnter={ ()=> dispatch(loadShowsAction) }/>
+      <Route path="/bands" components={{ content : Bands }} onEnter={ withInitialState(global, ()=> dispatch(loadBandsAction)) }/>
+      <Route path="/shows" components={{ content : Shows }} onEnter={ withInitialState(global, ()=> dispatch(loadShowsAction)) }/>
 
-      <IndexRoute components={{content : Home}} onEnter={()=> dispatch(loadEventsAction) } />
-      
+      <IndexRoute components={{content : Home}} onEnter={withInitialState(global, ()=> dispatch(loadEventsAction)) } />
+
       <Route path="*" components={{ content : NotFound }}/>
     </Route>
 );

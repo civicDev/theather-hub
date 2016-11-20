@@ -13,7 +13,7 @@ const store = configureStore(window.__initialState__);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-const routes = AppRoutes({ dispatch : store.dispatch.bind(store) });
+const routes = AppRoutes({ dispatch : store.dispatch.bind(store) , global : window});
 
 ReactDOM.render(
   <Provider store={store}>
