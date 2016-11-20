@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "./header";
 
-const App = ({content})=>(
+const App = ({header,content})=>(
   <div>
-    <Header />
+    {header}
     {content}
   </div>
 );

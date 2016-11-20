@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import MyBand from "./components/MyBand";
 import Bands from "./components/Bands";
 import Shows from "./components/Shows";
+import Header from "./components/header/Header";
 
 import { loadEventsAction } from "./actions/home";
 import { loadBandsAction } from "./actions/bands";
@@ -31,13 +32,13 @@ function withInitialState(global, next){
 
 const AppRoutes = ({dispatch, global}) => (
     <Route path="/" component={App}>
-      <Route path="/my-band" components={{ content : MyBand }}/>
-      <Route path="/bands" components={{ content : Bands }} onEnter={ withInitialState(global, ()=> dispatch(loadBandsAction)) }/>
-      <Route path="/shows" components={{ content : Shows }} onEnter={ withInitialState(global, ()=> dispatch(loadShowsAction)) }/>
+      <Route path="/my-band" components={{ header : Header, content : MyBand }}/>
+      <Route path="/bands" components={{ header : Header, content : Bands }} onEnter={ withInitialState(global, ()=> dispatch(loadBandsAction)) }/>
+      <Route path="/shows" components={{ cheader : Header, ontent : Shows }} onEnter={ withInitialState(global, ()=> dispatch(loadShowsAction)) }/>
 
-      <IndexRoute components={{content : Home}} onEnter={withInitialState(global, ()=> dispatch(loadEventsAction)) } />
+      <IndexRoute components={{header : Header, content : Home}} onEnter={withInitialState(global, ()=> dispatch(loadEventsAction)) } />
 
-      <Route path="*" components={{ content : NotFound }}/>
+      <Route path="*" components={{header : Header, content : NotFound }}/>
     </Route>
 );
 
