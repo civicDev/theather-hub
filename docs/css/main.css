@@ -84,7 +84,7 @@ header {
     background-color: #5A5A5A;
     height: 4px;
     margin-top: 7px; }
-  .slideshow {
+  header .slideshow {
     width: 100%;
     height: 180px;
     background-image: url("../img/slide.png");
@@ -92,15 +92,15 @@ header {
     background-position-y: -85px;
     opacity: 0.88;
     position: relative; }
-  .slideinfo {
+  header .slideinfo {
     position: absolute;
     right: 48px;
     bottom: 20px;
     color: white;
     text-align: right; }
-    .slideinfo .title {
+    header .slideinfo .title {
       font-size: 0.875em; }
-    .slideinfo .location, .slideinfo .date {
+    header .slideinfo .location, header .slideinfo .date {
       font-size: 0.75em;
       font-weight: 300; }
 
@@ -253,7 +253,7 @@ header {
     padding-right: 0; }
 
 .band-unit__photo {
-  height: 190px;
+  height: 285px;
   width: 100%;
   object-fit: cover; }
 
@@ -481,6 +481,117 @@ header {
   .show-unit__photo, .show-unit__details {
     margin-left: auto;
     margin-right: auto; } }
+.band-profile-details {
+  width: 100%;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 960px;
+  margin: 0 auto;
+  display: block;
+  padding-top: 30px; }
+  .band-profile-details .band-row {
+    font-size: 0;
+    margin-top: 30px; }
+    .band-profile-details .band-row:not(:first-of-type) {
+      margin-top: 90px; }
+  .band-profile-details .band-unit {
+    width: 100%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0; }
+    .band-profile-details .band-unit .details-row {
+      display: flex;
+      flex-basis: 100%; }
+      .band-profile-details .band-unit .details-row + .details-row:not(:last-of-type) {
+        margin-top: 60px; }
+      .band-profile-details .band-unit .details-row .details-column {
+        flex-basis: 100%; }
+    .band-profile-details .band-unit .details-row__unit {
+      flex-basis: 100%;
+      padding: 0 10px; }
+    .band-profile-details .band-unit .members-row {
+      width: 66.66667%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0; }
+    .band-profile-details .band-unit .shows-row {
+      width: 100%;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 0;
+      padding-right: 0;
+      margin-top: 30px; }
+    .band-profile-details .band-unit .band-member {
+      display: flex;
+      justify-content: space-between; }
+      .band-profile-details .band-unit .band-member span, .band-profile-details .band-unit .band-member a {
+        flex-basis: 100%; }
+  .band-profile-details .band-unit__photo {
+    height: 400px;
+    margin: 0 auto;
+    max-width: 300px;
+    object-fit: cover; }
+  .band-profile-details .band-unit__details {
+    font-weight: 300;
+    font-size: 0.875em;
+    line-height: 1.5;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 100%; }
+    .band-profile-details .band-unit__details p:first-of-type {
+      margin: 0; }
+
+@media only screen and (max-width: 960px) {
+  .band-profile-details section {
+    padding: 0 18px; }
+
+  .band-profile-details .band-unit__details .details-row:first-of-type {
+    flex-direction: column;
+    flex: 1 0 auto; }
+  .band-profile-details .band-unit .members-row {
+    width: 100%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0; } }
+@media only screen and (max-width: 750px) {
+  .band-profile-details .band-unit__details .details-row {
+    flex-direction: column;
+    flex: 1 1 auto; } }
+@media only screen and (max-width: 600px) {
+  .band-profile-details .band-unit .display-flex {
+    flex-direction: column; }
+  .band-profile-details .band-member {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 20px; }
+  .band-profile-details .band-unit__details {
+    padding-left: 0; }
+  .band-profile-details .band-unit__details .details-row {
+    flex-direction: row;
+    flex: 1 1 auto;
+    margin-top: 20px; }
+  .band-profile-details .band-unit__details .details-row__unit {
+    padding: 0; }
+  .band-profile-details .band-member {
+    flex-direction: column; } }
 form h1 {
   border-bottom: 1px solid #5A5A5A;
   margin-bottom: 30px; }

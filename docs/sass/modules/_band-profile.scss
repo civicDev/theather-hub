@@ -1,0 +1,150 @@
+.band-profile-details{
+    @include col(1, 1, 0);
+    max-width: $content-width;
+    margin: 0 auto;
+    display: block;
+    padding-top: $big-margin;
+    .band-row {
+        @include row();
+        margin-top: $big-margin;
+        
+        &:not(:first-of-type) {
+            margin-top: $big-margin * 3;
+        }
+    }
+
+    .band-unit {
+        @include col(1,1, 0);
+
+        .details-row {
+            display: flex;
+            flex-basis: 100%;
+            
+           & + .details-row:not(:last-of-type) {
+               margin-top: 2 * $big-margin;
+           }
+
+            .details-column {
+                flex-basis: 100%;
+            }
+        }
+
+        .details-row__unit {
+            flex-basis: 100%;
+            padding: 0 $small-margin/2;
+        }
+
+        .members-row {
+            @include col(2,3,0);
+        }
+
+        .shows-row {
+            @include col(1,1,0);
+            margin-top: $big-margin;
+        }
+
+        .band-member {
+            display: flex;
+            justify-content: space-between;
+
+            span, a {
+                flex-basis: 100%;
+            }
+        }           
+    }
+
+    .band-unit__photo {
+        height: 400px;
+        margin: 0 auto;
+        max-width: 300px;
+        object-fit: cover;
+    }
+    
+    .band-unit__details {
+        @include font-main();
+        line-height: 1.5;
+        padding-left: $small-margin;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-basis: 100%;
+
+        p {
+            &:first-of-type {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .band-profile-details section {
+        padding: 0 $mobile-page-margin;
+    }
+
+    .band-profile-details {
+
+        .band-unit__details {
+            .details-row {
+                &:first-of-type {
+                    flex-direction: column;
+                    flex: 1 0 auto;
+                } 
+            }
+        }
+
+        .band-unit .members-row {
+            @include col(1,1,0);
+        }
+    }
+}
+
+@media only screen and (max-width: 750px) {   
+    .band-profile-details {
+            .band-unit__details {
+            .details-row {
+                flex-direction: column;
+                flex: 1 1 auto;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {   
+    .band-profile-details {
+        .band-unit {
+            .display-flex {
+                flex-direction: column;
+            }
+        }
+
+        .band-member {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            margin-top: $small-margin;
+        }   
+
+        .band-unit__details {
+            padding-left: 0;
+        }
+
+        .band-unit__details {
+            .details-row {
+                flex-direction: row;
+                flex: 1 1 auto;
+                margin-top: $small-margin;
+            }
+
+            .details-row__unit {
+                padding: 0;
+            }
+        }
+
+        .band-member {
+            flex-direction: column;
+        }
+    }
+}
+
