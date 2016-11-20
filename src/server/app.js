@@ -15,7 +15,9 @@ import { syncHistoryWithStore } from "react-router-redux";
 import { reducer } from "../client/store";
 
 import AppRoutes from '../client/routes';
-import { loadedEventsAction, loadEventsAction } from "../client/actions/home";
+import { loadedEventsAction } from "../client/actions/home";
+import { loadedShowsAction } from "../client/actions/shows";
+import { loadedBandsAction } from "../client/actions/bands";
 
 import DB from './db';
 
@@ -76,20 +78,27 @@ app.get("/api/events", function(req, res){
   });
 });
 
+function getAllShows(){
+  return db.all('SELECT * FROM shows ORDER BY name ASC');
+}
+
 app.get("/api/shows", function(req, res) {
-  db.all('SELECT * FROM shows ORDER BY name ASC').then(function(result) {
+  getAllShows().then(function(result) {
     res.json(result);
   })
 });
 
+function getAllBands(){
+  return db.all('SELECT * FROM bands ORDER BY name ASC');
+}
+
 app.get("/api/bands", function(req, res) {
-  db.all('SELECT * FROM bands ORDER BY name ASC').then(function (result) {
+  getAllBands().then(function (result) {
     res.json(result);
   });
 });
 
 app.post('/api/bands', function(req, res) {
-  console.log(req.body);
   const data = {
     name: 'Test Band',
     type: 1,
@@ -119,8 +128,15 @@ app.get('/api/seed', function(req, res) {
 function fetchRouteData(route, store){
   if(route === "/"){
     return getAllEvents().then(function(events){
-      store.dispatch(loadEventsAction);
       store.dispatch(loadedEventsAction(events));
+    });
+  }else if(route === "/shows"){
+    return getAllShows().then(function(shows){
+      store.dispatch(loadedShowsAction(shows));
+    });
+  } else if(route === "/bands"){
+    return getAllBands().then(function(bands){
+      store.dispatch(loadedBandsAction(bands));
     });
   }
   return Promise.resolve();
