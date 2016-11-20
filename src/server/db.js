@@ -31,6 +31,7 @@ const db = new (sqlite3.verbose()).Database('db', sqlite3.OPEN_READWRITE | sqlit
         (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(255),
+            image VARCHAR(510),
             type TINYINT,
             founded SMALLINT,
             city VARCHAR(255),

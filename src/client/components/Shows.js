@@ -44,18 +44,22 @@ const ShowRow = ({shows}) => {
 const Shows = ({shows, loading}) => {
   if(loading){
     return (
-      <main className="show-list">
-        <LoadingSection />
-      </main>
+      <div>
+        <main className="show-list">
+          <LoadingSection />
+        </main>
+      </div>
     );
   }
   return (
-    <main className="show-list">
-      <section>
-        <h1>Vezi toate spectacolele</h1>
-        {chunk(2, shows).map((shows)=> <ShowRow key={makeId(shows)} shows={shows} />)}
-      </section>
-    </main>
+    <div>
+      <main className="show-list">
+        <section>
+          <h1>Vezi toate spectacolele</h1>
+          {chunk(2, shows).map((shows)=> <ShowRow key={makeId(shows)} shows={shows} />)}
+        </section>
+      </main>
+    </div>
   );
 };
 

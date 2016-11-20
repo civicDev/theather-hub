@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import Logo from "./Logo";
 import {headerMenuToggle} from "../../actions/header";
 import {Link} from "react-router";
+import SubMenu from "./SubMenu";
 
 function selected(link, actualLink){
   return link === actualLink ? "selected" : "";
@@ -36,6 +37,8 @@ const Header = ({dispatch, menuVisisble, currentLink}) => {
             </ul>
         </nav>
         <div className="header-separator">&nbsp;</div>
+        
+        {currentLink === '/my-band' ? <SubMenu/> : null}
     </header>
   );
 };

@@ -7,7 +7,7 @@ import { makeId } from "../utils";
 const Band = ({band}) => {
   return (
     <div className="band-unit">
-        <img className="band-unit__photo margin-auto" src={band.profilePicture}/>
+        <img className="band-unit__photo margin-auto" src={band.image}/>
         <div>
             <a href="#">
                 <p className="band-unit__name">{band.name}</p>
